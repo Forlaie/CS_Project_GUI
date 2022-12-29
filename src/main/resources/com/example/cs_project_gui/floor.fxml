@@ -66,12 +66,12 @@
          <children>
             <VBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Button fx:id="fightButton" defaultButton="true" mnemonicParsing="false" onAction="#clickFight" text="Fight">
+                  <Button fx:id="fightButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickFight" text="Fight">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fleeButton" cancelButton="true" mnemonicParsing="false" onAction="#clickFlee" text="Flee">
+                  <Button fx:id="fleeButton" cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickFlee" text="Flee">
                      <font>
                         <Font size="14.0" />
                      </font>

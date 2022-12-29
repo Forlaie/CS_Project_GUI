@@ -59,10 +59,10 @@
       </MenuBar>
       <HBox alignment="CENTER" layoutX="176.0" layoutY="187.0" spacing="10.0">
          <children>
-            <Button fx:id="floorButton" mnemonicParsing="false" onAction="#clickFloor" text="Floor" />
-            <Button fx:id="dungeonButton" mnemonicParsing="false" onAction="#clickDungeon" text="Dungeon" />
-            <Button fx:id="shopButton" mnemonicParsing="false" onAction="#clickShop" text="Shop" />
-            <Button fx:id="smitheryButton" mnemonicParsing="false" onAction="#clickSmithery" text="Smithery" />
+            <Button fx:id="floorButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickFloor" text="Floor" />
+            <Button fx:id="dungeonButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickDungeon" text="Dungeon" />
+            <Button fx:id="shopButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickShop" text="Shop" />
+            <Button fx:id="smitheryButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickSmithery" text="Smithery" />
          </children>
       </HBox>
    </children>

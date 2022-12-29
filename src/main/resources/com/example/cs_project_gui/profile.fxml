@@ -69,6 +69,6 @@
             </VBox>
          </children>
       </VBox>
-      <Button fx:id="backButton" cancelButton="true" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
    </children>
 </AnchorPane>

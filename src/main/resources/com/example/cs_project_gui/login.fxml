@@ -28,7 +28,7 @@
                <children>
                   <VBox spacing="18.0">
                      <children>
-                        <Label text="Create Username:" textAlignment="CENTER">
+                        <Label text="Enter Username:" textAlignment="CENTER">
                            <opaqueInsets>
                               <Insets right="10.0" />
                            </opaqueInsets>
@@ -36,7 +36,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Create Password:" textAlignment="CENTER">
+                        <Label text="Enter Password:" textAlignment="CENTER">
                            <opaqueInsets>
                               <Insets right="10.0" />
                            </opaqueInsets>
@@ -48,17 +48,17 @@
                   </VBox>
                   <VBox spacing="10.0">
                      <children>
-                        <TextField fx:id="usernameTextField" promptText="Enter username">
+                        <TextField fx:id="usernameTextField" focusTraversable="false" promptText="Enter username">
                            <opaqueInsets>
                               <Insets left="10.0" />
                            </opaqueInsets>
                         </TextField>
-                        <PasswordField fx:id="passwordTextField" promptText="Enter password" />
+                        <PasswordField fx:id="passwordTextField" focusTraversable="false" promptText="Enter password" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#clickLogin" text="Login">
+            <Button fx:id="loginButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickLogin" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
@@ -70,6 +70,6 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="backButton" cancelButton="true" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
    </children>
 </AnchorPane>

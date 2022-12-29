@@ -37,7 +37,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="SlevelupButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSLevelup" text="Level up!">
+                              <Button fx:id="SlevelupButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickSLevelup" text="Level up!">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -81,7 +81,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="HlevelupButton" defaultButton="true" mnemonicParsing="false" onAction="#clickHLevelup" text="Level up!">
+                              <Button fx:id="HlevelupButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickHLevelup" text="Level up!">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -125,7 +125,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="AlevelupButton" defaultButton="true" mnemonicParsing="false" onAction="#clickALevelup" text="Level up!">
+                              <Button fx:id="AlevelupButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickALevelup" text="Level up!">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -148,6 +148,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="backButton" cancelButton="true" layoutX="587.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" AnchorPane.rightAnchor="5.0" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutX="587.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" AnchorPane.rightAnchor="5.0" />
    </children>
 </AnchorPane>

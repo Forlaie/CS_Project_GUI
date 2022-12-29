@@ -15,12 +15,12 @@
       </Label>
       <HBox alignment="CENTER" layoutX="150.0" layoutY="150.0" prefHeight="100.0" prefWidth="298.0" spacing="100.0">
          <children>
-            <Button fx:id="signupButton" mnemonicParsing="false" onAction="#clickSignup" text="Sign Up">
+            <Button fx:id="signupButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickSignup" text="Sign Up">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#clickLogin" text="Login">
+            <Button fx:id="loginButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickLogin" text="Login">
                <font>
                   <Font size="14.0" />
                </font>

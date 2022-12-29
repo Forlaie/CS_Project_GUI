@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.DrinkPotion_Controller">
    <children>
-      <Button fx:id="backButton" cancelButton="true" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
       <VBox alignment="CENTER" layoutY="45.0" spacing="10.0">
          <children>
             <Label text="Potions">
@@ -29,7 +29,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
+            <Button fx:id="submitButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
             <Label fx:id="messageLabel" prefHeight="20.0" prefWidth="0.0">
                <font>
                   <Font size="14.0" />

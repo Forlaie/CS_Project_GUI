@@ -56,18 +56,18 @@
                   </VBox>
                   <VBox spacing="10.0">
                      <children>
-                        <TextField fx:id="usernameTextField" promptText="Enter username">
+                        <TextField fx:id="usernameTextField" focusTraversable="false" promptText="Enter username">
                            <opaqueInsets>
                               <Insets left="10.0" />
                            </opaqueInsets>
                         </TextField>
-                        <PasswordField fx:id="passwordTextField" promptText="Enter password" />
-                        <PasswordField fx:id="confirmTextField" promptText="Enter password" />
+                        <PasswordField fx:id="passwordTextField" focusTraversable="false" promptText="Enter password" />
+                        <PasswordField fx:id="confirmTextField" focusTraversable="false" promptText="Enter password" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button fx:id="signupButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSignup" text="Sign Up">
+            <Button fx:id="signupButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickSignup" text="Sign Up">
                <font>
                   <Font size="14.0" />
                </font>
@@ -79,6 +79,6 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="backButton" cancelButton="true" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
    </children>
 </AnchorPane>

@@ -18,8 +18,8 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="yesButton" defaultButton="true" mnemonicParsing="false" onAction="#clickYes" text="Yes" />
-                  <Button fx:id="noButton" cancelButton="true" mnemonicParsing="false" onAction="#clickNo" text="No" />
+                  <Button fx:id="yesButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickYes" text="Yes" />
+                  <Button fx:id="noButton" cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickNo" text="No" />
                </children>
             </HBox>
          </children>
