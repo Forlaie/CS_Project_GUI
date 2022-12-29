@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.Signup_Controller">
+   <children>
+      <Label layoutX="139.0" layoutY="14.0" text="Wen Ymar Elad">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" layoutX="56.0" layoutY="100.0" prefHeight="226.0" prefWidth="482.0" spacing="15.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Sign Up" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <VBox spacing="18.0">
+                     <children>
+                        <Label text="Create Username:" textAlignment="CENTER">
+                           <opaqueInsets>
+                              <Insets right="10.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Create Password:" textAlignment="CENTER">
+                           <opaqueInsets>
+                              <Insets right="10.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Confirm Password:" textAlignment="CENTER">
+                           <opaqueInsets>
+                              <Insets right="10.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <TextField fx:id="usernameTextField" promptText="Enter username">
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                        </TextField>
+                        <PasswordField fx:id="passwordTextField" promptText="Enter password" />
+                        <PasswordField fx:id="confirmTextField" promptText="Enter password" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button fx:id="signupButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSignup" text="Sign Up">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="messageLabel">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="backButton" cancelButton="true" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+   </children>
+</AnchorPane>

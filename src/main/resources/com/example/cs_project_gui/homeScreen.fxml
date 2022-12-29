@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.HomeScreen_Controller">
+   <children>
+      <MenuBar fx:id="menuBar" layoutY="1.0">
+        <menus>
+          <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
+            <items>
+                  <MenuItem fx:id="gameInfo" mnemonicParsing="false" onAction="#clickGameInfo" text="Game Info" />
+                  <MenuItem fx:id="enemyInfo" mnemonicParsing="false" onAction="#clickEnemyInfo" text="Enemy Info" />
+                  <MenuItem fx:id="itemInfo" mnemonicParsing="false" onAction="#clickItemInfo" text="Item Info" />
+                  <MenuItem fx:id="saveAndExit" mnemonicParsing="false" onAction="#clickSaveAndExit" text="Save and Exit" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+          <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@profile.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <MenuItem fx:id="checkProfile" mnemonicParsing="false" onAction="#clickCheckProfile" text="Check Profile" />
+                  <MenuItem fx:id="changeUsername" mnemonicParsing="false" onAction="#clickChangeUsername" text="Change Username" />
+                  <MenuItem fx:id="changePassword" mnemonicParsing="false" onAction="#clickChangePassword" text="Change Password" />
+               </items>
+          </Menu>
+          <Menu fx:id="inventory" mnemonicParsing="false" text="Inventory">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@inventory.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <MenuItem fx:id="checkInventory" mnemonicParsing="false" onAction="#clickCheckInventory" text="Check Inventory" />
+                  <MenuItem fx:id="drinkHealthPotion" mnemonicParsing="false" onAction="#clickDrinkHealthPotion" text="Drink Health Potion" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox alignment="CENTER" layoutX="176.0" layoutY="187.0" spacing="10.0">
+         <children>
+            <Button fx:id="floorButton" mnemonicParsing="false" onAction="#clickFloor" text="Floor" />
+            <Button fx:id="dungeonButton" mnemonicParsing="false" onAction="#clickDungeon" text="Dungeon" />
+            <Button fx:id="shopButton" mnemonicParsing="false" onAction="#clickShop" text="Shop" />
+            <Button fx:id="smitheryButton" mnemonicParsing="false" onAction="#clickSmithery" text="Smithery" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

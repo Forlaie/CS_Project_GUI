@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.DrinkPotion_Controller">
+   <children>
+      <Button fx:id="backButton" cancelButton="true" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <VBox alignment="CENTER" layoutY="45.0" spacing="10.0">
+         <children>
+            <Label text="Potions">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableView" prefHeight="186.0" prefWidth="600.0">
+               <columns>
+                  <TableColumn fx:id="selectColumn" prefWidth="151.20001524686813" text="Select" />
+                  <TableColumn fx:id="nameColumn" prefWidth="151.20001524686813" text="Name" />
+                  <TableColumn fx:id="amountColumn" prefWidth="447.1999969482422" text="Amount" />
+                  <TableColumn fx:id="useColumn" prefWidth="447.1999969482422" text="Use" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
+            <Label fx:id="messageLabel" prefHeight="20.0" prefWidth="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

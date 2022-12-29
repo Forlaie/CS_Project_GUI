@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.Floor_Controller">
+   <children>
+      <MenuBar fx:id="menuBar" layoutY="1.0">
+         <menus>
+            <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
+               <items>
+                  <MenuItem fx:id="gameInfo" mnemonicParsing="false" onAction="#clickGameInfo" text="Game Info" />
+                  <MenuItem fx:id="enemyInfo" mnemonicParsing="false" onAction="#clickEnemyInfo" text="Enemy Info" />
+                  <MenuItem fx:id="itemInfo" mnemonicParsing="false" onAction="#clickItemInfo" text="Item Info" />
+                  <MenuItem fx:id="saveAndExit" mnemonicParsing="false" onAction="#clickSaveAndExit" text="Save and Exit" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Menu>
+            <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@profile.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <MenuItem fx:id="checkProfile" mnemonicParsing="false" onAction="#clickCheckProfile" text="Check Profile" />
+                  <MenuItem fx:id="changeUsername" mnemonicParsing="false" onAction="#clickChangeUsername" text="Change Username" />
+                  <MenuItem fx:id="changePassword" mnemonicParsing="false" onAction="#clickChangePassword" text="Change Password" />
+               </items>
+            </Menu>
+            <Menu fx:id="inventory" mnemonicParsing="false" text="Inventory">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@inventory.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <MenuItem fx:id="checkInventory" mnemonicParsing="false" onAction="#clickCheckInventory" text="Check Inventory" />
+                  <MenuItem fx:id="drinkPotion" mnemonicParsing="false" onAction="#clickDrinkPotion" text="Drink Potion" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <HBox layoutX="20.0" layoutY="266.0" spacing="10.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Button fx:id="fightButton" defaultButton="true" mnemonicParsing="false" onAction="#clickFight" text="Fight">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fleeButton" cancelButton="true" mnemonicParsing="false" onAction="#clickFlee" text="Flee">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label text="Your turn">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="YTInfo" editable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label text="Enemy turn">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="ETInfo" editable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <ImageView fitHeight="195.0" fitWidth="79.0" layoutX="101.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@character.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="84.0" layoutY="43.0" spacing="5.0">
+         <children>
+            <Label text="HP">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="healthBar" prefHeight="18.0" prefWidth="79.0" progress="1.0" />
+            <Label fx:id="healthLabel" text="/">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

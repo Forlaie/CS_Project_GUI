@@ -1,0 +1,134 @@
+package com.example.cs_project_gui;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class Main extends Application {
+    public static Player player;
+    public static String previousScreen;
+    public static Floor floor;
+    public static Dungeon dungeon;
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("firstScreen.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setTitle("Wen Ymar Elad");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+    public static void putInfoIntoPlayerInfoFile() throws FileNotFoundException {
+        PrintWriter playerOutput = new PrintWriter("playerInfo.txt");
+        playerOutput.println(player.getHealth());
+        playerOutput.println(player.getDefence());
+        playerOutput.println(player.getAttack());
+        playerOutput.println(player.getLevel());
+        playerOutput.println(player.getXP());
+        playerOutput.println(player.getCoins());
+        if (player.getMaterials().containsKey(Item.materialDrops[0])){
+            playerOutput.println(player.getMaterials().get(Item.materialDrops[0]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getMaterials().containsKey(Item.materialDrops[1])){
+            playerOutput.println(player.getMaterials().get(Item.materialDrops[1]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getMaterials().containsKey(Item.materialDrops[2])){
+            playerOutput.println(player.getMaterials().get(Item.materialDrops[2]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getMaterials().containsKey(Item.weaponDrops[0])){
+            playerOutput.println(player.getMaterials().get(Item.weaponDrops[0]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getMaterials().containsKey(Item.weaponDrops[1])){
+            playerOutput.println(player.getMaterials().get(Item.weaponDrops[1]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getMaterials().containsKey(Item.weaponDrops[2])){
+            playerOutput.println(player.getMaterials().get(Item.weaponDrops[2]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getInventory().containsKey(Item.potions[0])){
+            playerOutput.println(player.getInventory().get(Item.potions[0]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getInventory().containsKey(Item.potions[1])){
+            playerOutput.println(player.getInventory().get(Item.potions[1]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        if (player.getInventory().containsKey(Item.potions[2])){
+            playerOutput.println(player.getInventory().get(Item.potions[2]));
+        }
+        else{
+            playerOutput.println(0);
+        }
+        playerOutput.println(player.getEquipped()[0].getHealth());
+        playerOutput.println(player.getEquipped()[0].getDefence());
+        playerOutput.println(player.getEquipped()[0].getAttack());
+        playerOutput.println(player.getEquipped()[1].getHealth());
+        playerOutput.println(player.getEquipped()[1].getDefence());
+        playerOutput.println(player.getEquipped()[1].getAttack());
+        playerOutput.println(player.getEquipped()[2].getHealth());
+        playerOutput.println(player.getEquipped()[2].getDefence());
+        playerOutput.println(player.getEquipped()[2].getAttack());
+        playerOutput.close();
+    }
+
+    public static void putInfoIntoLoginInfoFile() throws FileNotFoundException, NoSuchAlgorithmException {
+        PrintWriter pw = new PrintWriter("loginInfo.txt");
+        pw.println(player.getUsername());
+        pw.println(player.getPassword());
+        pw.close();
+    }
+
+    public static void putInfoIntoFloorFile() throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter("floorInfo.txt");
+        pw.println(Floor.floorLevel);
+        for (Enemy enemy : floor.getEnemies()){
+            pw.println(enemy.getName());
+        }
+        pw.close();
+    }
+
+    public static String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-512");
+        byte[] bytePassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hashedPassword = new StringBuilder();
+        for (byte aByte : bytePassword) {
+            hashedPassword.append(String.format("%02X", aByte));
+        }
+        return hashedPassword.toString();
+    }
+}

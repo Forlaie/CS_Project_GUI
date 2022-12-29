@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.ChangeUsername_Controller">
+   <children>
+      <Button fx:id="backButton" cancelButton="true" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Label layoutX="154.0" layoutY="14.0" text="Change Username">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="110.0" layoutY="116.0" spacing="30.0">
+         <children>
+            <Label text="What would you like your new username to be?">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="378.0" spacing="10.0">
+               <children>
+                  <Label text="New Username:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textField" />
+               </children>
+            </HBox>
+            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
+            <Label fx:id="messageLabel">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

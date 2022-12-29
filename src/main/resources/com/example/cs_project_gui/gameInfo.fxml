@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.GameInfo_Controller">
+   <children>
+      <Button fx:id="backButton" cancelButton="true" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Label layoutX="217.0" layoutY="14.0" text="Game Info">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutX="22.0" layoutY="68.0" prefHeight="314.0" prefWidth="556.0" text="Your character is equipped with a sword, shield, and armour.&#10;To increase your stats, you can fight monsters by either entering dungeons or floors.&#10;You gain a certain amount of XP when you defeat a monster based on the monster's difficulty&#10;You can also increase your stats by leveling up your equipped items!&#10;                &#10;As you defeat monsters, not only do they drop XP, they also drop coins and random materials.&#10;Monsters usually drop materials, but they have a 10% chance of dropping an item (sword, shield, armour).&#10;You use these coins and materials/items to increase the stats of your equipped items.&#10;Each item needs a certain type of material to be upgraded, which is where the dungeons come in handy.&#10;You can choose to enter specific dungeons (and choose the level of difficulty) to farm the materials you need!&#10;                &#10;When upgrading items, you can choose to use materials or other items of the same kind.&#10;The difference between the two is that using materials to upgrade will only upgrade the main stat of that item,&#10;but using other items of the same kind will upgrade all stats!&#10;                &#10;The shop sells potions that you can use to buff your character in order to defeat difficult floors.&#10;                &#10;The goal of the game is to beat as many floors as you can.&#10;Each floor, the difficulty and number of monsters is ramped higher, so make sure you prepare well beforehand!" wrapText="true" />
+   </children>
+</AnchorPane>
