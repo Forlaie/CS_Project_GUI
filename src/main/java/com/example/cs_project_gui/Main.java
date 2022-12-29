@@ -35,6 +35,7 @@ public class Main extends Application {
     public static void putInfoIntoPlayerInfoFile() throws FileNotFoundException {
         PrintWriter playerOutput = new PrintWriter("playerInfo.txt");
         playerOutput.println(player.getHealth());
+        playerOutput.println(player.getMaxHealth());
         playerOutput.println(player.getDefence());
         playerOutput.println(player.getAttack());
         playerOutput.println(player.getLevel());

@@ -19,6 +19,21 @@ public class Potion extends Item{
         }
     }
 
+    public void usePotion(int use){
+        switch (name){
+            case "Health potion" -> {
+                if (Main.player.getHealth()+health*use > Main.player.getMaxHealth()){
+                    Main.player.setHealth(Main.player.getMaxHealth());
+                }
+                else{
+                    Main.player.setHealth(Main.player.getHealth()+health*use);
+                }
+            }
+            case "Defence potion" -> Main.player.setDefence(Main.player.getDefence()+defence);
+            case "Attack potion" -> Main.player.setAttack(Main.player.getAttack()+attack);
+        }
+    }
+
     // overload toString() method to return the necessary info about potions
 //    public String toString(){
 //        return bold + name + reset + "\n" + italic + description + reset;

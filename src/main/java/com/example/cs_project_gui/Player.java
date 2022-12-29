@@ -26,6 +26,7 @@ public class Player {
     private String username;
     private String password;
     private int health;
+    private int maxHealth;
     private int defence;
     private int attack;
     private int level;
@@ -52,6 +53,7 @@ public class Player {
         this.username = username;
         this.password = password;
         health = 95;
+        maxHealth = 100;
         health += equipped[1].getHealth();
         defence = 0;
         defence += equipped[2].getDefence();
@@ -64,10 +66,11 @@ public class Player {
     }
 
     // constructor for recreating player from save file
-    public Player(String username, String password, int health, int defence, int attack, int level, int xp, int coins, int[] materialQuantities, int[] potionQuantities, int[] swordInfo, int[] shieldInfo, int[] armourInfo){
+    public Player(String username, String password, int health, int maxHealth, int defence, int attack, int level, int xp, int coins, int[] materialQuantities, int[] potionQuantities, int[] swordInfo, int[] shieldInfo, int[] armourInfo){
         this.username = username;
         this.password = password;
         this.health = health;
+        this.maxHealth = maxHealth;
         this.defence = defence;
         this.attack = attack;
         this.level = level;
@@ -148,6 +151,9 @@ public class Player {
     // get player health
     public int getHealth(){
         return health;
+    }
+    public int getMaxHealth(){
+        return maxHealth;
     }
 
     // set player health
@@ -428,6 +434,7 @@ public class Player {
                 if (inventory.get(Item.potions[0]) == 0){
                     inventory.remove(Item.potions[0]);
                 }
+                Item.potions[0].usePotion(use);
                 currentHealthLabel.setText("Current health: " + health);
                 if (inventory.get(Item.potions[0]) == null){
                     numOfHealthPotionsLabel.setText("Health potions: 0");
@@ -436,7 +443,6 @@ public class Player {
                     numOfHealthPotionsLabel.setText("Health potions: " + inventory.get(Item.potions[0]));
                 }
             }
-
         } catch (NumberFormatException e) {
             messageLabel.setText("Please input an integer");
         }
@@ -476,6 +482,7 @@ public class Player {
                     if (inventory.get(potion) == 0){
                         inventory.remove(potion);
                     }
+                    potion.usePotion(use);
                 }
                 messageLabel.setText("Successfully used potions!");
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
@@ -537,7 +544,8 @@ public class Player {
         YTInfo.appendText("Level up!\n\n");
         xp = xp - level*10;
         level += 1;
-        health += 10;
+        maxHealth += 10;
+        health = maxHealth;
         attack += 5;
         defence += 5;
         coins += 20;

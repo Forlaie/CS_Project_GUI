@@ -49,6 +49,7 @@ public class Login_Controller {
                     } else {
                         Scanner playerInput = new Scanner(new File("playerInfo.txt"));
                         int health = Integer.parseInt(playerInput.nextLine());
+                        int maxHealth = Integer.parseInt(playerInput.nextLine());
                         int defence = Integer.parseInt(playerInput.nextLine());
                         int attack = Integer.parseInt(playerInput.nextLine());
                         int level = Integer.parseInt(playerInput.nextLine());
@@ -79,7 +80,7 @@ public class Login_Controller {
                             int stat = Integer.parseInt(playerInput.nextLine());
                             armourInfo[i] = stat;
                         }
-                        Main.player = new Player(fileUsername, filePassword, health, defence, attack, level, xp, coins, materialQuantities, potionQuantities, swordInfo, shieldInfo, armourInfo);
+                        Main.player = new Player(fileUsername, filePassword, health, maxHealth, defence, attack, level, xp, coins, materialQuantities, potionQuantities, swordInfo, shieldInfo, armourInfo);
                         //messageLabel.setText("Successful login!");
                         Scanner floorInput = new Scanner(new File("floorInfo.txt"));
                         Floor.floorLevel = Integer.parseInt(floorInput.nextLine());

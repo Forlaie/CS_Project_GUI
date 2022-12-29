@@ -2,6 +2,7 @@ package com.example.cs_project_gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -9,10 +10,12 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Floor_Controller {
+public class Floor_Controller implements Initializable {
     @FXML
     private MenuBar menuBar;
     @FXML
@@ -51,6 +54,10 @@ public class Floor_Controller {
     private ProgressBar healthBar;
     @FXML
     private Label healthLabel;
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
+    }
     @FXML
     protected void clickGameInfo() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -157,6 +164,7 @@ public class Floor_Controller {
             String filePassword = loginInput.nextLine();
             Scanner playerInput = new Scanner(new File("playerInfo.txt"));
             int health = Integer.parseInt(playerInput.nextLine());
+            int maxHealth = Integer.parseInt(playerInput.nextLine());
             int defence = Integer.parseInt(playerInput.nextLine());
             int attack = Integer.parseInt(playerInput.nextLine());
             int level = Integer.parseInt(playerInput.nextLine());
@@ -187,7 +195,7 @@ public class Floor_Controller {
                 int stat = Integer.parseInt(playerInput.nextLine());
                 armourInfo[i] = stat;
             }
-            Main.player = new Player(fileUsername, filePassword, health, defence, attack, level, xp, coins, materialQuantities, potionQuantities, swordInfo, shieldInfo, armourInfo);
+            Main.player = new Player(fileUsername, filePassword, health, maxHealth, defence, attack, level, xp, coins, materialQuantities, potionQuantities, swordInfo, shieldInfo, armourInfo);
             Scanner floorInput = new Scanner(new File("floorInfo.txt"));
             Floor.floorLevel = Integer.parseInt(floorInput.nextLine());
             ArrayList<String> enemyNames = new ArrayList<String>();
