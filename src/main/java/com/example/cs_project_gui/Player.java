@@ -598,7 +598,7 @@ public class Player {
                 //died();
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("died.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-                Stage stage = (Stage) YTInfo.getScene().getWindow();
+                Stage stage = (Stage) healthLabel.getScene().getWindow();
                 stage.setTitle("Wen Ymar Elad");
                 stage.setScene(scene);
                 stage.show();

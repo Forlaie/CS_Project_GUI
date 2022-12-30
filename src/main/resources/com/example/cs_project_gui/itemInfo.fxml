@@ -23,7 +23,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="materialsTable" prefHeight="109.0" prefWidth="600.0">
+            <TableView fx:id="materialsTable" focusTraversable="false" prefHeight="109.0" prefWidth="600.0">
                <columns>
                   <TableColumn fx:id="MnameColumn" prefWidth="151.20001524686813" text="Name" />
                   <TableColumn fx:id="MdescriptionColumn" prefWidth="447.1999969482422" text="Description" />
@@ -37,7 +37,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="weaponTable" prefHeight="109.0" prefWidth="600.0">
+            <TableView fx:id="weaponTable" focusTraversable="false" prefHeight="109.0" prefWidth="600.0">
                <columns>
                   <TableColumn fx:id="WnameColumn" prefWidth="151.20001524686813" text="Name" />
                   <TableColumn fx:id="WdescriptionColumn" prefWidth="447.1999969482422" text="Description" />
@@ -51,7 +51,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="potionsTable" prefHeight="109.0" prefWidth="600.0">
+            <TableView fx:id="potionsTable" focusTraversable="false" prefHeight="109.0" prefWidth="600.0">
                <columns>
                   <TableColumn fx:id="PnameColumn" prefWidth="151.20001524686813" text="Name" />
                   <TableColumn fx:id="PdescriptionColumn" prefWidth="447.1999969482422" text="Description" />

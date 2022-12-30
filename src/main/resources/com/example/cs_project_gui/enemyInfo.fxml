@@ -15,10 +15,10 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutY="92.0" prefHeight="200.0" prefWidth="600.0">
+      <TableView fx:id="tableView" focusTraversable="false" layoutY="92.0" prefHeight="200.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="130.40002745389938" text="Name" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="467.99998474121094" text="Description" />
+            <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="467.99998474121094" text="Description" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

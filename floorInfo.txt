@@ -1,7 +1,2 @@
-6
-Vampire
+1
 Troll
-Troll
-Troll
-Golem
-Dragon

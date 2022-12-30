@@ -18,7 +18,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TableView fx:id="tableView" prefHeight="186.0" prefWidth="600.0">
+            <TableView fx:id="tableView" focusTraversable="false" prefHeight="186.0" prefWidth="600.0">
                <columns>
                   <TableColumn fx:id="selectColumn" prefWidth="151.20001524686813" text="Select" />
                   <TableColumn fx:id="nameColumn" prefWidth="151.20001524686813" text="Name" />

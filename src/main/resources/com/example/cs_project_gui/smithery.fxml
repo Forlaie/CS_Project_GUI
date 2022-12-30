@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.Smithery_Controller">
    <children>
-      <TabPane layoutX="-1.0" prefHeight="402.0" prefWidth="617.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane focusTraversable="false" layoutX="-1.0" prefHeight="402.0" prefWidth="617.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Sword">
             <content>
@@ -25,7 +25,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="swordTable" prefHeight="200.0" prefWidth="617.0">
+                              <TableView fx:id="swordTable" focusTraversable="false" prefHeight="200.0" prefWidth="617.0">
                                 <columns>
                                   <TableColumn fx:id="SselectColumn" prefWidth="75.0" text="Select" />
                                   <TableColumn fx:id="SnameColumn" prefWidth="75.0" text="Name" />
@@ -69,7 +69,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="shieldTable" prefHeight="200.0" prefWidth="617.0">
+                              <TableView fx:id="shieldTable" focusTraversable="false" prefHeight="200.0" prefWidth="617.0">
                                  <columns>
                                     <TableColumn fx:id="HselectColumn" prefWidth="75.0" text="Select" />
                                     <TableColumn fx:id="HnameColumn" prefWidth="75.0" text="Name" />
@@ -113,7 +113,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="armourTable" prefHeight="200.0" prefWidth="617.0">
+                              <TableView fx:id="armourTable" focusTraversable="false" prefHeight="200.0" prefWidth="617.0">
                                  <columns>
                                     <TableColumn fx:id="AselectColumn" prefWidth="75.0" text="Select" />
                                     <TableColumn fx:id="AnameColumn" prefWidth="75.0" text="Name" />

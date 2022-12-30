@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.Died_Controller">
    <children>
       <Label layoutX="224.0" layoutY="42.0" text="You died!">
@@ -16,12 +15,12 @@
       </Label>
       <HBox layoutX="105.0" layoutY="175.0" spacing="150.0">
          <children>
-            <Button fx:id="PSButton" mnemonicParsing="false" onAction="#clickPS" prefWidth="120.0" text="Restart from previous save" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="PSButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickPS" prefWidth="120.0" text="Restart from previous save" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="BButton" mnemonicParsing="false" onAction="#clickB" prefWidth="120.0" text="Restart from beginning" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="BButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickB" prefWidth="120.0" text="Restart from beginning" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
