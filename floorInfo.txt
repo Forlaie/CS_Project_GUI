@@ -1,6 +1,7 @@
-5
+6
 Vampire
-Enemy
 Troll
-Enemy
+Troll
+Troll
 Golem
+Dragon

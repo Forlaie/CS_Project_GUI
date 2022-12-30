@@ -239,7 +239,7 @@ public class Floor_Controller implements Initializable {
     }
 
     @FXML
-    protected void clickFight() throws FileNotFoundException {
+    protected void clickFight() throws IOException {
         Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, exitFloorButton);
 //        Thread.sleep(1000);
 //        Main.player.FbattleE(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);

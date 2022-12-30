@@ -454,9 +454,16 @@ public class Player {
         boolean valid = true;
         boolean useSomething = false;
         for (Potion potion : getObservableInventory()){
-            if (potion.getCheckBox().isSelected() && Integer.parseInt(potion.getTextField().getText()) > 0){
-                useSomething = true;
-                break;
+            if (potion.getCheckBox().isSelected()){
+                try {
+                    int use = Integer.parseInt(potion.getTextField().getText());
+                    if (use > 0){
+                        useSomething = true;
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    //throw new RuntimeException(e);
+                }
             }
         }
         if (useSomething){
@@ -542,7 +549,7 @@ public class Player {
     // called when xp reaches the required amount to level uo
     // increases stats
     public void levelUp(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        YTInfo.appendText("Level up!\n\n");
+        YTInfo.appendText("Level up!\n");
         xp = xp - level*10;
         level += 1;
         maxHealth += 10;
@@ -554,7 +561,7 @@ public class Player {
 
     // defeat a monster that drops an item
     public void defeatedMonster(Item item, TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        YTInfo.appendText("\nGained " + (10+Floor.floorLevel) + " xp!\n");
+        YTInfo.appendText("Gained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
             levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -565,7 +572,7 @@ public class Player {
 
     // defeat a monster that doesn't drop an item
     public void defeatedMonster(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        System.out.println("\nGained " + (10+Floor.floorLevel) + " xp!\n");
+        YTInfo.appendText("Gained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
             levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -574,7 +581,7 @@ public class Player {
     }
 
     // floor battle function
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, Button exitFloorButton) throws FileNotFoundException {
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, Button exitFloorButton) throws IOException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
@@ -588,7 +595,13 @@ public class Player {
                 healthBar.setProgress(0);
                 healthLabel.setText("0/" + maxHealth);
                 //Thread.sleep(1000);
-                died();
+                //died();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("died.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                Stage stage = (Stage) YTInfo.getScene().getWindow();
+                stage.setTitle("Wen Ymar Elad");
+                stage.setScene(scene);
+                stage.show();
             }
             else{
                 healthBar.setProgress((double) health/maxHealth);
@@ -699,17 +712,7 @@ public class Player {
 //
 
     // function for when player dies
-    public void died() throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        System.out.println();
-        // ask if player wants to restart from previous save, or restart from the beginning
-        System.out.println("You have died! Restart from previous save or reset everything from the beginning? (S/R)");
-        String choice = input.nextLine();
-        // while the player inputs an invalid choice, keep prompting
-        while (!(choice.equals("S") || choice.equals("R"))){
-            System.out.println("Sorry, that is not a recognized command. Please try again.");
-            choice = input.nextLine();
-        }
+    public void died(String choice) throws FileNotFoundException {
         // restart from previous save
         if (choice.equals("S")) {
             try {
