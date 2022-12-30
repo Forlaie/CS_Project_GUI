@@ -40,7 +40,7 @@ public class Profile_Controller implements Initializable {
         xpBar.setProgress(Main.player.getXP()/(Main.player.getLevel()*10.0));
         xpLabel.setText(Main.player.getXP() + "/" + (Main.player.getLevel()*10) + " XP");
         coinLabel.setText("Coins: " + Main.player.getCoins());
-        healthLabel.setText("Health: " + Main.player.getHealth());
+        healthLabel.setText("Health: " + Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         defenceLabel.setText("Defence: " + Main.player.getDefence());
         attackLabel.setText("Attack: " + Main.player.getAttack());
     }

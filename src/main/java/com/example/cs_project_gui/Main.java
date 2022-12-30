@@ -95,15 +95,11 @@ public class Main extends Application {
         else{
             playerOutput.println(0);
         }
-        playerOutput.println(player.getEquipped()[0].getHealth());
-        playerOutput.println(player.getEquipped()[0].getDefence());
-        playerOutput.println(player.getEquipped()[0].getAttack());
-        playerOutput.println(player.getEquipped()[1].getHealth());
-        playerOutput.println(player.getEquipped()[1].getDefence());
-        playerOutput.println(player.getEquipped()[1].getAttack());
-        playerOutput.println(player.getEquipped()[2].getHealth());
-        playerOutput.println(player.getEquipped()[2].getDefence());
-        playerOutput.println(player.getEquipped()[2].getAttack());
+        for (int i = 0; i < 3; i++){
+            playerOutput.println(player.getEquipped()[i].getHealth());
+            playerOutput.println(player.getEquipped()[i].getDefence());
+            playerOutput.println(player.getEquipped()[i].getAttack());
+        }
         playerOutput.close();
     }
 

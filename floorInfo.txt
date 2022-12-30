@@ -1,2 +1,5 @@
-1
-Troll
+4
+Vampire
+Enemy
+Golem
+Vampire

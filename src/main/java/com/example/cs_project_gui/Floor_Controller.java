@@ -64,6 +64,10 @@ public class Floor_Controller implements Initializable {
     private HBox fightHBox;
     @FXML
     private Button exitFloorButton;
+    @FXML
+    private Button continueToNextFloorButton;
+    @FXML
+    private HBox doneHBox;
     public static String YT;
     public static String ET;
     @Override
@@ -72,12 +76,20 @@ public class Floor_Controller implements Initializable {
         if (Main.floor.getAllEnemiesDead()){
             floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
             fightHBox.setVisible(false);
-            exitFloorButton.setVisible(true);
+//            fightButton.setDefaultButton(false);
+//            fleeButton.setCancelButton(false);
+            doneHBox.setVisible(true);
+//            exitFloorButton.setCancelButton(true);
+//            continueToNextFloorButton.setDefaultButton(true);
         }
         else{
             floorLabel.setText("Floor " + Floor.floorLevel);
             fightHBox.setVisible(true);
-            exitFloorButton.setVisible(false);
+//            fightButton.setDefaultButton(true);
+//            fleeButton.setCancelButton(true);
+            doneHBox.setVisible(false);
+//            exitFloorButton.setCancelButton(false);
+//            continueToNextFloorButton.setDefaultButton(false);
         }
     }
     @FXML
@@ -240,14 +252,30 @@ public class Floor_Controller implements Initializable {
 
     @FXML
     protected void clickFight() throws IOException {
-        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, exitFloorButton);
+        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox);
 //        Thread.sleep(1000);
 //        Main.player.FbattleE(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
     }
 
     @FXML
     protected void clickExitFloor() throws IOException {
+        Main.putInfoIntoPlayerInfoFile();
+        Main.floor = new Floor();
+        Main.putInfoIntoFloorFile();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        stage.setTitle("Wen Ymar Elad");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void clickContinueToNextFloor() throws IOException {
+        Main.putInfoIntoPlayerInfoFile();
+        Main.floor = new Floor();
+        Main.putInfoIntoFloorFile();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("floor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");

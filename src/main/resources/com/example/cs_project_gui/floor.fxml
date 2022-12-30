@@ -85,7 +85,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="YTInfo" editable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
+                  <TextArea fx:id="YTInfo" editable="false" focusTraversable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
                </children>
             </VBox>
             <VBox alignment="CENTER">
@@ -95,7 +95,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="ETInfo" editable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
+                  <TextArea fx:id="ETInfo" editable="false" focusTraversable="false" prefHeight="98.0" prefWidth="244.0" wrapText="true" />
                </children>
             </VBox>
          </children>
@@ -129,10 +129,19 @@
             </Label>
          </children>
       </HBox>
-      <Button fx:id="exitFloorButton" defaultButton="true" focusTraversable="false" layoutX="262.0" layoutY="310.0" mnemonicParsing="false" onAction="#clickExitFloor" text="Exit Floor">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
+      <HBox fx:id="doneHBox" alignment="CENTER" layoutX="134.0" layoutY="310.0" spacing="100.0">
+         <children>
+            <Button fx:id="exitFloorButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickExitFloor" text="Exit floor">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="continueToNextFloorButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickContinueToNextFloor" text="Continue to next floor">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

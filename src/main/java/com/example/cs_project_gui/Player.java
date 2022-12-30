@@ -157,6 +157,10 @@ public class Player {
         return maxHealth;
     }
 
+    public void setMaxHealth(int maxHealth){
+        this.maxHealth = maxHealth;
+    }
+
     // set player health
     public void setHealth(int health){
         this.health = health;
@@ -581,8 +585,10 @@ public class Player {
     }
 
     // floor battle function
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, Button exitFloorButton) throws IOException {
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) throws IOException {
         // print out what enemies did on their turn
+        System.out.println();
+        System.out.println("Enemy turn");
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
             // takes player defence into account when calculating damage taken
@@ -590,6 +596,7 @@ public class Player {
             health -= damage;
             ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
             Floor_Controller.ET += enemy.getName() + " has dealt " + damage + " damage\n";
+            System.out.println(enemy.getName() + " has dealt " + damage + " damage");
             // check if player has died
             if (health <= 0){
                 healthBar.setProgress(0);
@@ -612,18 +619,30 @@ public class Player {
         // battle each enemy
         for (Enemy enemy : enemies){
             enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            profile();
         }
         healthBar.setProgress((double) health/maxHealth);
         healthLabel.setText(health + "/" + maxHealth);
         // update the enemies on the floor (remove dead enemies)
         Main.floor.updateEnemies();
         if (Main.floor.getAllEnemiesDead()){
-            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, exitFloorButton);
+            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox);
         }
 //        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 //
 //        // Execute timer after 2 seconds
 //        service.schedule(runnableTask(YTInfo, ETInfo, healthBar, healthLabel, floorLabel), 3, TimeUnit.SECONDS);
+    }
+
+    // show player profile
+    public void profile(){
+        System.out.println();
+        System.out.println("Level: " + level);
+        System.out.println("XP: " + xp + "/" + level*10);
+        System.out.println("Coins: " + coins);
+        System.out.println("Health: " + health);
+        System.out.println("Defence: " + defence);
+        System.out.println("Attack: " + attack);
     }
 
 //    private Runnable runnableTask(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) {
@@ -722,6 +741,7 @@ public class Player {
                 fileInput = new Scanner(new File("playerInfo.txt"));
                 // reset player information to previous save (e.g. stats, inventory, etc)
                 int health = Integer.parseInt(fileInput.nextLine());
+                int maxHealth = Integer.parseInt(fileInput.nextLine());
                 int defence = Integer.parseInt(fileInput.nextLine());
                 int attack = Integer.parseInt(fileInput.nextLine());
                 int level = Integer.parseInt(fileInput.nextLine());
@@ -755,6 +775,7 @@ public class Player {
                 Main.player.setUsername(username);
                 Main.player.setPassword(password);
                 Main.player.setHealth(health);
+                Main.player.setMaxHealth(maxHealth);
                 Main.player.setDefence(defence);
                 Main.player.setAttack(attack);
                 Main.player.setLevel(level);

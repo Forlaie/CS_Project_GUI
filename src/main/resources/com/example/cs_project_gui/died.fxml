@@ -13,7 +13,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <HBox layoutX="105.0" layoutY="175.0" spacing="150.0">
+      <HBox alignment="CENTER" layoutX="105.0" layoutY="175.0" spacing="150.0">
          <children>
             <Button fx:id="PSButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickPS" prefWidth="120.0" text="Restart from previous save" textAlignment="CENTER" wrapText="true">
                <font>
