@@ -29,7 +29,7 @@ public class DrinkHealthPotion_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        currentHealthLabel.setText("Current health: " + Main.player.getHealth());
+        currentHealthLabel.setText("Current health: " + Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         if (Main.player.getInventory().get(Item.potions[0]) == null){
             numOfHealthPotionsLabel.setText("Health potions: 0");
         }

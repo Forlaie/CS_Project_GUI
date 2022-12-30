@@ -440,7 +440,7 @@ public class Player {
                     inventory.remove(Item.potions[0]);
                 }
                 Item.potions[0].usePotion(use);
-                currentHealthLabel.setText("Current health: " + health);
+                currentHealthLabel.setText("Current health: " + health + "/" + maxHealth);
                 if (inventory.get(Item.potions[0]) == null){
                     numOfHealthPotionsLabel.setText("Health potions: 0");
                 }
@@ -489,12 +489,15 @@ public class Player {
             }
             if (valid){
                 for (Potion potion : getObservableInventory()){
-                    int use = Integer.parseInt(potion.getTextField().getText());
-                    inventory.replace(potion, inventory.get(potion)-use);
-                    if (inventory.get(potion) == 0){
-                        inventory.remove(potion);
+                    if (potion.getCheckBox().isSelected()){
+                        int use = Integer.parseInt(potion.getTextField().getText());
+                        inventory.replace(potion, inventory.get(potion)-use);
+                        if (inventory.get(potion) == 0){
+                            inventory.remove(potion);
+                        }
+                        potion.usePotion(use);
+                        potionsInUse.add(potion);
                     }
-                    potion.usePotion(use);
                 }
                 messageLabel.setText("Successfully used potions!");
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
@@ -587,8 +590,6 @@ public class Player {
     // floor battle function
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) throws IOException {
         // print out what enemies did on their turn
-        System.out.println();
-        System.out.println("Enemy turn");
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
             // takes player defence into account when calculating damage taken
@@ -596,7 +597,6 @@ public class Player {
             health -= damage;
             ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
             Floor_Controller.ET += enemy.getName() + " has dealt " + damage + " damage\n";
-            System.out.println(enemy.getName() + " has dealt " + damage + " damage");
             // check if player has died
             if (health <= 0){
                 healthBar.setProgress(0);
@@ -619,7 +619,6 @@ public class Player {
         // battle each enemy
         for (Enemy enemy : enemies){
             enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-            profile();
         }
         healthBar.setProgress((double) health/maxHealth);
         healthLabel.setText(health + "/" + maxHealth);
@@ -632,17 +631,6 @@ public class Player {
 //
 //        // Execute timer after 2 seconds
 //        service.schedule(runnableTask(YTInfo, ETInfo, healthBar, healthLabel, floorLabel), 3, TimeUnit.SECONDS);
-    }
-
-    // show player profile
-    public void profile(){
-        System.out.println();
-        System.out.println("Level: " + level);
-        System.out.println("XP: " + xp + "/" + level*10);
-        System.out.println("Coins: " + coins);
-        System.out.println("Health: " + health);
-        System.out.println("Defence: " + defence);
-        System.out.println("Attack: " + attack);
     }
 
 //    private Runnable runnableTask(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) {

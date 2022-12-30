@@ -1,5 +1,4 @@
-4
-Vampire
+3
+Troll
 Enemy
 Golem
-Vampire
