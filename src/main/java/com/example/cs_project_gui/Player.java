@@ -4,10 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -16,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 //import java.io.File;
 //import java.io.FileNotFoundException;
@@ -540,7 +541,7 @@ public class Player {
 
     // called when xp reaches the required amount to level uo
     // increases stats
-    public void levelUp(TextArea YTInfo){
+    public void levelUp(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         YTInfo.appendText("Level up!\n\n");
         xp = xp - level*10;
         level += 1;
@@ -552,28 +553,28 @@ public class Player {
     }
 
     // defeat a monster that drops an item
-    public void defeatedMonster(Item item, TextArea YTInfo){
+    public void defeatedMonster(Item item, TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         YTInfo.appendText("\nGained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
-            levelUp(YTInfo);
+            levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
         materials.merge(item, 1, Integer::sum);
         coins += 10+Floor.floorLevel;
     }
 
     // defeat a monster that doesn't drop an item
-    public void defeatedMonster(TextArea YTInfo){
+    public void defeatedMonster(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         System.out.println("\nGained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
-            levelUp(YTInfo);
+            levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
         coins += 10+Floor.floorLevel;
     }
 
     // floor battle function
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel) throws FileNotFoundException {
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, Button exitFloorButton) throws FileNotFoundException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
@@ -581,51 +582,121 @@ public class Player {
             int damage = enemy.getAttack()*(100/defence);
             health -= damage;
             ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
-        }
-        // check if player has died
-        if (health <= 0){
-            died();
-        }
-        // if player is still alive, then do player's turn
-        else{
-            // battle each enemy
-            for (Enemy enemy : enemies){
-                enemy.battle(YTInfo, ETInfo);
+            Floor_Controller.ET += enemy.getName() + " has dealt " + damage + " damage\n";
+            // check if player has died
+            if (health <= 0){
+                healthBar.setProgress(0);
+                healthLabel.setText("0/" + maxHealth);
+                //Thread.sleep(1000);
+                died();
             }
-            // update the enemies on the floor (remove dead enemies)
-            Main.floor.updateEnemies();
+            else{
+                healthBar.setProgress((double) health/maxHealth);
+                healthLabel.setText(health + "/" + maxHealth);
+                //Thread.sleep(1000);
+            }
         }
+        // battle each enemy
+        for (Enemy enemy : enemies){
+            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+        }
+        healthBar.setProgress((double) health/maxHealth);
+        healthLabel.setText(health + "/" + maxHealth);
+        // update the enemies on the floor (remove dead enemies)
+        Main.floor.updateEnemies();
+        if (Main.floor.getAllEnemiesDead()){
+            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, exitFloorButton);
+        }
+//        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+//
+//        // Execute timer after 2 seconds
+//        service.schedule(runnableTask(YTInfo, ETInfo, healthBar, healthLabel, floorLabel), 3, TimeUnit.SECONDS);
     }
 
-    // dungeon battle function
-    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel) throws FileNotFoundException {
-        // print out what enemies did on their turn
-        System.out.println();
-        System.out.println("Enemy turn");
-        ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
-        for (Enemy enemy : enemies){
-            // takes player defence into account when calculating damage taken
-            int damage = enemy.getAttack()*(100/defence);
-            health -= damage;
-            System.out.println(enemy.getName() + " has dealt " + damage + " damage");
-        }
-        // check if player has died
-        if (health <= 0){
-            died();
-        }
-        // if player is still alive, then do player's turn
-        else{
-            System.out.println();
-            System.out.println("Your turn");
-            // battle each enemy
-            for (Enemy enemy : enemies){
-                enemy.battle(YTInfo, ETInfo);
-            }
-            System.out.println();
-            // update the enemies on the dungeon (remove dead enemies)
-            Main.dungeon.updateEnemies();
-        }
-    }
+//    private Runnable runnableTask(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) {
+//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
+//        // battle each enemy
+//        for (Enemy enemy : enemies){
+//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//        healthBar.setProgress((double) health/maxHealth);
+//        healthLabel.setText(health + "/" + maxHealth);
+//        // update the enemies on the floor (remove dead enemies)
+//        Main.floor.updateEnemies();
+//        if (Main.floor.getAllEnemiesDead()){
+//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//        return null;
+//    }
+
+//    private class FbattleE implements Runnable {
+//
+//        public void run()
+//        {
+//            System.out.println(Thread.currentThread().getName()
+//                    + ", executing run() method!");
+//        }
+//    }
+
+//    Runnable runnableTask = (TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) -> {
+//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
+//        // battle each enemy
+//        for (Enemy enemy : enemies){
+//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//        healthBar.setProgress((double) health/maxHealth);
+//        healthLabel.setText(health + "/" + maxHealth);
+//        // update the enemies on the floor (remove dead enemies)
+//        Main.floor.updateEnemies();
+//        if (Main.floor.getAllEnemiesDead()){
+//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//    };
+
+//    public void FbattleE(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
+//        // battle each enemy
+//        for (Enemy enemy : enemies){
+//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//        healthBar.setProgress((double) health/maxHealth);
+//        healthLabel.setText(health + "/" + maxHealth);
+//        // update the enemies on the floor (remove dead enemies)
+//        Main.floor.updateEnemies();
+//        if (Main.floor.getAllEnemiesDead()){
+//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+//        }
+//    }
+
+    // dungeon battle functionpublic void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel) throws FileNotFoundException {
+    ////        // print out what enemies did on their turn
+    ////        System.out.println();
+    ////        System.out.println("Enemy turn");
+    ////        ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
+    ////        for (Enemy enemy : enemies){
+    ////            // takes player defence into account when calculating damage taken
+    ////            int damage = enemy.getAttack()*(100/defence);
+    ////            health -= damage;
+    ////            System.out.println(enemy.getName() + " has dealt " + damage + " damage");
+    ////        }
+    ////        // check if player has died
+    ////        if (health <= 0){
+    ////            died();
+    ////        }
+    ////        // if player is still alive, then do player's turn
+    ////        else{
+    ////            System.out.println();
+    ////            System.out.println("Your turn");
+    ////            // battle each enemy
+    ////            for (Enemy enemy : enemies){
+    ////                enemy.battle(YTInfo, ETInfo);
+    ////            }
+    ////            System.out.println();
+    ////            // update the enemies on the dungeon (remove dead enemies)
+    ////            Main.dungeon.updateEnemies();
+    ////        }
+    ////    }
+//
 
     // function for when player dies
     public void died() throws FileNotFoundException {

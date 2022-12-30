@@ -1,5 +1,7 @@
 package com.example.cs_project_gui;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 // child of Enemy class (inheritance)
@@ -14,12 +16,12 @@ public class Golem extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account golem defence when calculating player damage
-    public void battle(TextArea YTInfo, TextArea ETInfo){
+    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
-        System.out.println("You have dealt " + playerDamage + " damage to " + name + "\n");
+        YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
-            died(YTInfo, ETInfo);
+            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 

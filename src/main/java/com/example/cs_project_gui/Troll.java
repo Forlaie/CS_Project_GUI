@@ -1,4 +1,6 @@
 package com.example.cs_project_gui;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
@@ -27,14 +29,14 @@ public class Troll extends Enemy{
     }
 
     // override died function in Enemy class to include stealing
-    public void died(TextArea YTInfo, TextArea ETInfo){
-        Main.player.defeatedMonster(YTInfo);
+    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+        Main.player.defeatedMonster(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         if (!Main.player.getInventory().isEmpty()){
             String itemName = steal();
-            System.out.println(name + " steals " + itemName + " before dying");
+            ETInfo.appendText(name + " steals " + itemName + " before dying\n");
         }
         else{
-            System.out.println(name + " has died");
+            ETInfo.appendText(name + " has died\n");
         }
         Main.floor.addDeadEnemy(this);
     }

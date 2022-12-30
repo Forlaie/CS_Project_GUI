@@ -1,4 +1,9 @@
 package com.example.cs_project_gui;
+
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
+
 // child of Enemy class (inheritance)
 public class Dragon extends Enemy{
     private int defence;
@@ -11,34 +16,34 @@ public class Dragon extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account dragon defence when calculating player damage
-    public void battle(Player player, Floor floor){
-        int playerDamage = (int) (player.getAttack() - player.getAttack()*(defence/100.0));
-        System.out.println("You have dealt " + playerDamage + " damage to " + name);
+    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+        int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
+        YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
-            died(player, floor);
+            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 
     // when dragon dies, instead of dropping items, it permanently increases one of your stats by a random amount (1-10)
-    public void died(Player player, Floor floor){
-        System.out.println(name + " has died");
+    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+        ETInfo.appendText(name + " has died\n");
         int stat = (int) (Math.random()*3);
         int value = (int) (Math.random()*10)+1;
         switch (stat){
             case 0 -> {
-                System.out.println("Health stat increased by " + value + "!");
-                player.setHealth(player.getHealth()+value);
+                YTInfo.appendText("\nHealth stat increased by " + value + "!\n\n");
+                Main.player.setHealth(Main.player.getHealth()+value);
             }
             case 1 -> {
-                System.out.println("Defence stat increased by " + value + "!");
-                player.setDefence(player.getDefence()+value);
+                YTInfo.appendText("\nDefence stat increased by " + value + "!\n\n");
+                Main.player.setDefence(Main.player.getDefence()+value);
             }
             case 2 -> {
-                System.out.println("Attack stat increased by " + value + "!");
-                player.setAttack(player.getAttack()+value);
+                YTInfo.appendText("\nAttack stat increased by " + value + "!\n\n");
+                Main.player.setAttack(Main.player.getAttack()+value);
             }
         }
-        floor.addDeadEnemy(this);
+        Main.floor.addDeadEnemy(this);
     }
 }

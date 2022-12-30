@@ -177,9 +177,16 @@ public class Item {
                 int cost = 0;
                 boolean useSomething = false;
                 for (Item item : Main.player.getObservableSwordMaterials()){
-                    if (item.getCheckBox().isSelected() && Integer.parseInt(item.getTextField().getText()) > 0){
-                        useSomething = true;
-                        break;
+                    if (item.getCheckBox().isSelected()){
+                        try {
+                            int use = Integer.parseInt(item.getTextField().getText());
+                            if (use > 0){
+                                useSomething = true;
+                                break;
+                            }
+                        } catch (NumberFormatException e) {
+                            //throw new RuntimeException(e);
+                        }
                     }
                 }
                 if (useSomething){
@@ -242,9 +249,16 @@ public class Item {
                 int cost = 0;
                 boolean useSomething = false;
                 for (Item item : Main.player.getObservableShieldMaterials()){
-                    if (item.getCheckBox().isSelected() && Integer.parseInt(item.getTextField().getText()) > 0){
-                        useSomething = true;
-                        break;
+                    if (item.getCheckBox().isSelected()){
+                        try {
+                            int use = Integer.parseInt(item.getTextField().getText());
+                            if (use > 0){
+                                useSomething = true;
+                                break;
+                            }
+                        } catch (NumberFormatException e) {
+                            //throw new RuntimeException(e);
+                        }
                     }
                 }
                 if (useSomething){
@@ -307,9 +321,16 @@ public class Item {
                 int cost = 0;
                 boolean useSomething = false;
                 for (Item item : Main.player.getObservableArmourMaterials()){
-                    if (item.getCheckBox().isSelected() && Integer.parseInt(item.getTextField().getText()) > 0){
-                        useSomething = true;
-                        break;
+                    if (item.getCheckBox().isSelected()){
+                        try {
+                            int use = Integer.parseInt(item.getTextField().getText());
+                            if (use > 0){
+                                useSomething = true;
+                                break;
+                            }
+                        } catch (NumberFormatException e) {
+                            //throw new RuntimeException(e);
+                        }
                     }
                 }
                 if (useSomething){

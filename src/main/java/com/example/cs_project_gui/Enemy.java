@@ -2,6 +2,8 @@ package com.example.cs_project_gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 public class Enemy {
@@ -89,19 +91,19 @@ public class Enemy {
     }
 
     // battling in a floor
-    public void battle(TextArea YTInfo, TextArea ETInfo){
+    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         if (health <= 0){
-            died(YTInfo, ETInfo);
+            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 
     // dying in a floor (drop random item)
-    public void died(TextArea YTInfo, TextArea ETInfo){
+    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         ETInfo.appendText(name + " has died\n");
         Item item = Item.generateRandomDrop();
-        Main.player.defeatedMonster(item, YTInfo);
+        Main.player.defeatedMonster(item, YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         ETInfo.appendText(name + " dropped " + item.getName() + "\n");
         Main.floor.addDeadEnemy(this);
     }

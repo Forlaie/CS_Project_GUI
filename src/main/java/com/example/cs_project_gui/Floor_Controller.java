@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -14,6 +15,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Floor_Controller implements Initializable {
     @FXML
@@ -54,9 +58,27 @@ public class Floor_Controller implements Initializable {
     private ProgressBar healthBar;
     @FXML
     private Label healthLabel;
+    @FXML
+    private Label floorLabel;
+    @FXML
+    private HBox fightHBox;
+    @FXML
+    private Button exitFloorButton;
+    public static String YT;
+    public static String ET;
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
+        if (Main.floor.getAllEnemiesDead()){
+            floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
+            fightHBox.setVisible(false);
+            exitFloorButton.setVisible(true);
+        }
+        else{
+            floorLabel.setText("Floor " + Floor.floorLevel);
+            fightHBox.setVisible(true);
+            exitFloorButton.setVisible(false);
+        }
     }
     @FXML
     protected void clickGameInfo() throws IOException {
@@ -218,6 +240,18 @@ public class Floor_Controller implements Initializable {
 
     @FXML
     protected void clickFight() throws FileNotFoundException {
-        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel);
+        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, exitFloorButton);
+//        Thread.sleep(1000);
+//        Main.player.FbattleE(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+    }
+
+    @FXML
+    protected void clickExitFloor() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        stage.setTitle("Wen Ymar Elad");
+        stage.setScene(scene);
+        stage.show();
     }
 }

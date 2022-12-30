@@ -1,4 +1,13 @@
 package com.example.cs_project_gui;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableBooleanValue;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Floor {
@@ -68,15 +77,6 @@ public class Floor {
         return enemies;
     }
 
-    // prints out what floor player entered as well as all the enemies' info
-    public void enterLevel(){
-        System.out.println();
-        System.out.println("Floor " + floorLevel);
-        for (Enemy enemy : enemies) {
-            System.out.println(enemy);
-        }
-    }
-
     // add a dead enemy to the deadEnemies list
     public void addDeadEnemy(Enemy enemy){
         deadEnemies.add(enemy);
@@ -87,24 +87,18 @@ public class Floor {
         enemies.removeAll(deadEnemies);
     }
 
-    // updates the results after one turn
-    public void fightUpdate(Player player){
-        updateEnemies();
-        System.out.println("Result");
-        System.out.println("You have " + player.getHealth() + " hp");
-        for (Enemy enemy : enemies){
-            System.out.println(enemy);
-        }
-    }
-
     // runs when floor is successfully cleared
     // gets rid of the potions in effect (ends buff)
-    public void floorCleared(){
-        System.out.println();
-        System.out.println("Floor " + floorLevel + " cleared!");
+    public void floorCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, Button exitFloorButton) throws FileNotFoundException {
+        floorLabel.setText("Floor " + floorLevel + " cleared!");
         for (Potion potion : Main.player.getPotionsInUse()){
             potion.endOfEffect();
         }
         Main.player.clearPotionsInUse();
+        fightHBox.setVisible(false);
+        exitFloorButton.setVisible(true);
+        Main.putInfoIntoPlayerInfoFile();
+        Main.floor = new Floor();
+        Main.putInfoIntoFloorFile();
     }
 }

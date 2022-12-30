@@ -1,6 +1,8 @@
 package com.example.cs_project_gui;
 // child of Enemy class (inheritance)
 
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 public class Reaper extends Enemy{
@@ -10,11 +12,11 @@ public class Reaper extends Enemy{
     }
 
     // when reaper dies in a dungeon, give LOREEE
-    public void died(TextArea YTInfo, TextArea ETInfo){
+    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         lore();
         Item item = new Item("Ancient seed", 0, "An ancient seed left behind from the future. Perhaps you should plant it?");
-        Main.player.defeatedMonster(item, YTInfo);
-        System.out.println(name + " dropped " + item.getName());
+        Main.player.defeatedMonster(item, YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+        ETInfo.appendText(name + " dropped " + item.getName() + "\n");
         Main.floor.addDeadEnemy(this);
     }
 

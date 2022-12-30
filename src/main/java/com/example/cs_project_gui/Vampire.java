@@ -1,5 +1,7 @@
 package com.example.cs_project_gui;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 // child of Enemy class (inheritance)
@@ -11,7 +13,7 @@ public class Vampire extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account vampire sucking blood (stealing player health)
-    public void battle(TextArea YTInfo, TextArea ETInfo){
+    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
@@ -19,7 +21,7 @@ public class Vampire extends Enemy{
         ETInfo.appendText("Vampire sucked " + suckedBlood + " hp " + "from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
-            died(YTInfo, ETInfo);
+            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 

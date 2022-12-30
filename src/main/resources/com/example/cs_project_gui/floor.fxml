@@ -62,7 +62,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox layoutX="20.0" layoutY="266.0" spacing="10.0">
+      <HBox fx:id="fightHBox" layoutX="20.0" layoutY="266.0" spacing="10.0">
          <children>
             <VBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
@@ -120,5 +120,19 @@
             </Label>
          </children>
       </HBox>
+      <HBox alignment="CENTER" layoutX="266.0" prefHeight="35.0" prefWidth="334.0">
+         <children>
+            <Label fx:id="floorLabel" text="Floor #">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="exitFloorButton" defaultButton="true" focusTraversable="false" layoutX="262.0" layoutY="310.0" mnemonicParsing="false" onAction="#clickExitFloor" text="Exit Floor" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

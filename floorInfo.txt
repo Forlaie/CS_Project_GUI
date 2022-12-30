@@ -1,2 +1,6 @@
-1
+5
+Vampire
 Enemy
+Troll
+Enemy
+Golem
