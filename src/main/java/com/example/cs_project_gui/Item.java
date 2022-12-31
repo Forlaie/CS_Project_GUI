@@ -24,10 +24,10 @@ public class Item {
 
     public static final Item[] weaponDrops = {
             new Item("Sword", 0, 0, 10, 10, """
-                    The sword is a sturdy and reliable weapon for any warrior
+                    The sword is a sturdy and reliable weapon for any \nwarrior
                     +10 atk"""),
             new Item("Shield", 5, 0, 0, 10, """
-                    The shield is an essential for any warrior to protect themselves and others
+                    The shield is an essential for any warrior to protect \nthemselves and others
                     +5 hp"""),
             new Item("Armour", 0, 20, 0, 30, """
                     Proper armour keeps your vitals safe

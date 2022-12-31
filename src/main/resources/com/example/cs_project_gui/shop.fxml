@@ -25,15 +25,12 @@
             </Label>
             <TableView fx:id="tableView" focusTraversable="false" prefHeight="198.0" prefWidth="600.0">
                <columns>
-                  <TableColumn fx:id="selectColumn" prefWidth="283.19999998807907" text="Select" />
-                  <TableColumn fx:id="nameColumn" prefWidth="283.19999998807907" text="Name" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="315.99993896484375" text="Description" />
-                  <TableColumn fx:id="costColumn" prefWidth="315.99993896484375" text="Cost" />
-                  <TableColumn fx:id="buyAmountColumn" prefWidth="315.99993896484375" text="Buy Amount" />
+                  <TableColumn fx:id="selectColumn" prefWidth="60.0" text="Select" />
+                  <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+                  <TableColumn fx:id="descriptionColumn" minWidth="0.0" prefWidth="270.0" text="Description" />
+                  <TableColumn fx:id="costColumn" text="Cost" />
+                  <TableColumn fx:id="buyAmountColumn" prefWidth="100.0" text="Buy Amount" />
                </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
             <Button fx:id="submitButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
             <Label fx:id="messageLabel">

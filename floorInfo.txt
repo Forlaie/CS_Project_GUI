@@ -1,5 +1,2 @@
-4
+1
 Golem
-Enemy
-Troll
-Enemy
