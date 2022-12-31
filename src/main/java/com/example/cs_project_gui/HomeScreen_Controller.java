@@ -155,7 +155,7 @@ public class HomeScreen_Controller {
     }
     @FXML
     protected void clickDungeon() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("dungeon.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("dungeonCreation.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");

@@ -16,17 +16,17 @@ public class Dragon extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account dragon defence when calculating player damage
-    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
         YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
-            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 
     // when dragon dies, instead of dropping items, it permanently increases one of your stats by a random amount (1-10)
-    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fdied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         ETInfo.appendText(name + " has died\n");
         int stat = (int) (Math.random()*3);
         int value = (int) (Math.random()*10)+1;

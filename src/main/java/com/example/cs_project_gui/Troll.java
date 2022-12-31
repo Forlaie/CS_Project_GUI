@@ -29,7 +29,7 @@ public class Troll extends Enemy{
     }
 
     // override died function in Enemy class to include stealing
-    public void died(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fdied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         Main.player.defeatedMonster(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         if (!Main.player.getInventory().isEmpty()){
             String itemName = steal();

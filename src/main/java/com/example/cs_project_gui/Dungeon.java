@@ -1,19 +1,26 @@
 package com.example.cs_project_gui;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
+
 import java.util.ArrayList;
 
 public class Dungeon {
     private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     private ArrayList<Enemy> deadEnemies = new ArrayList<Enemy>();
 
+    public static String enemyType;
+    public static String difficultyLevel;
     private int difficulty;
 
     // constructor to create a dungeon
-    public Dungeon(int enemyType, int difficulty){
+    public Dungeon(int difficulty){
         this.difficulty = difficulty;
         switch (enemyType) {
-            case 1 -> enemyDungeon();
-            case 2 -> vampireDungeon();
-            case 3 -> golemDungeon();
+            case "Enemy" -> enemyDungeon();
+            case "Vampire" -> vampireDungeon();
+            case "Golem" -> golemDungeon();
         }
     }
 
@@ -24,7 +31,6 @@ public class Dungeon {
                     Enemies are people who have been corrupted by the pollution
             """));
         }
-        enterDungeon("Enemy");
     }
 
     // creates the correct vampire dungeon based on difficulty chosen
@@ -36,7 +42,6 @@ public class Dungeon {
                     (scaled according to how much hp you have)
                     """));
         }
-        enterDungeon("Vampire");
     }
 
     // creates the correct golem dungeon based on difficulty chosen
@@ -47,16 +52,6 @@ public class Dungeon {
                     They have strong defence, so attacks will deal less damage than usual
                     (scaled according to how much defence the golem has)
                     """));
-        }
-        enterDungeon("Golem");
-    }
-
-    // prints out what dungeon player entered as well as all the enemies' info
-    public void enterDungeon(String enemyType){
-        System.out.println();
-        System.out.println("Dungeon " + enemyType + ": Difficulty " + difficulty);
-        for (Enemy enemy : enemies) {
-            System.out.println(enemy);
         }
     }
 
@@ -80,24 +75,15 @@ public class Dungeon {
         enemies.removeAll(deadEnemies);
     }
 
-    // updates the results after one turn
-    public void fightUpdate(Player player) {
-        System.out.println("Result");
-        System.out.println("You have " + player.getHealth() + " hp");
-        for (Enemy enemy : enemies){
-            System.out.println(enemy);
-        }
-    }
-
     // runs when dungeon is successfully cleared
     // gets rid of the potions in effect (ends buff)
-    public void dungeonCleared(Player player){
-        System.out.println();
-        System.out.println("Dungeon cleared!");
-        for (Potion potion : player.getPotionsInUse()){
+    public void dungeonCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox){
+        dungeonLabel.setText("Dungeon cleared!");
+        for (Potion potion : Main.player.getPotionsInUse()){
             potion.endOfEffect();
         }
-        player.clearPotionsInUse();
-        //player.profile();
+        Main.player.clearPotionsInUse();
+        fightHBox.setVisible(false);
+        doneHBox.setVisible(true);
     }
 }

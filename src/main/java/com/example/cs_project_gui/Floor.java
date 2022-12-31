@@ -89,7 +89,7 @@ public class Floor {
 
     // runs when floor is successfully cleared
     // gets rid of the potions in effect (ends buff)
-    public void floorCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) throws FileNotFoundException {
+    public void floorCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) {
         floorLabel.setText("Floor " + floorLevel + " cleared!");
         for (Potion potion : Main.player.getPotionsInUse()){
             potion.endOfEffect();

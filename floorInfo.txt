@@ -1,4 +1,5 @@
-3
+4
+Golem
+Enemy
 Troll
 Enemy
-Golem

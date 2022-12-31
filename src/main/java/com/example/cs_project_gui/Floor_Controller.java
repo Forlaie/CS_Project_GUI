@@ -15,9 +15,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Floor_Controller implements Initializable {
     @FXML
@@ -73,6 +70,7 @@ public class Floor_Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
+        healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
         if (Main.floor.getAllEnemiesDead()){
             floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
             fightHBox.setVisible(false);

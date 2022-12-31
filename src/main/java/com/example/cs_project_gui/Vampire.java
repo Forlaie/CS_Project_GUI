@@ -13,7 +13,7 @@ public class Vampire extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account vampire sucking blood (stealing player health)
-    public void battle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
@@ -21,29 +21,29 @@ public class Vampire extends Enemy{
         ETInfo.appendText("Vampire sucked " + suckedBlood + " hp " + "from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
-            died(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
     }
 
     // override dungeon battle function from parent class (Enemy)
     // takes into account vampire sucking blood (stealing player health)
-//    public void battle(Player player, Dungeon dungeon){
-//        health -= player.getAttack();
-//        System.out.println("You have dealt " + player.getAttack() + " damage to " + name + "\n");
-//        int suckedBlood = (int) (player.getHealth()*0.05);
-//        health += suckedBlood;
-//        System.out.println("Vampire sucked " + suckedBlood + " hp from you\n");
-//        player.setHealth(player.getHealth() - suckedBlood);
-//        if (health <= 0){
-//            died(player, dungeon);
-//        }
-//    }
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+        health -= Main.player.getAttack();
+        YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
+        int suckedBlood = (int) (Main.player.getHealth()*0.05);
+        health += suckedBlood;
+        System.out.println("Vampire sucked " + suckedBlood + " hp from you\n");
+        Main.player.setHealth(Main.player.getHealth() - suckedBlood);
+        if (health <= 0){
+            Ddied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+        }
+    }
 
     // when vampire dies in a dungeon, only drop vampire materials
-//    public void died(Player player, Dungeon dungeon){
-//        System.out.println(name + " has died");
-//        player.defeatedMonster(Item.materialDrops[1]);
-//        System.out.println(name + " dropped " + Item.materialDrops[1].getName());
-//        dungeon.addDeadEnemy(this);
-//    }
+    public void Ddied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+        ETInfo.appendText(name + " has died\n");
+        Main.player.defeatedMonster(Item.materialDrops[1], YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+        ETInfo.appendText(name + " dropped " + Item.materialDrops[1].getName() + "\n");
+        Main.dungeon.addDeadEnemy(this);
+    }
 }

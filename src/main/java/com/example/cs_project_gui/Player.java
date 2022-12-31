@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 //import java.io.File;
 //import java.io.FileNotFoundException;
@@ -531,28 +528,6 @@ public class Player {
         }
     }
 
-//    public void equipItem(Item item){
-//        equipped.add(item);
-//        health += item.getHealth();
-//        defence += item.getDefence();
-//        attack += item.getAttack();
-//        materials.remove(item);
-//    }
-
-//    public void unequipItem(Item item){
-//        equipped.remove(item);
-//        health -= item.getHealth();
-//        defence -= item.getDefence();
-//        attack -= item.getAttack();
-//        materials.add(item);
-//    }
-
-//    public void sellItem(Item item){
-//        System.out.println("Successfully sold " + item.getName() + "!");
-//        coins += item.getCost();
-//        materials.remove(item);
-//    }
-
     // called when xp reaches the required amount to level uo
     // increases stats
     public void levelUp(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
@@ -618,7 +593,7 @@ public class Player {
         }
         // battle each enemy
         for (Enemy enemy : enemies){
-            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            enemy.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
         healthBar.setProgress((double) health/maxHealth);
         healthLabel.setText(health + "/" + maxHealth);
@@ -688,35 +663,44 @@ public class Player {
 //        }
 //    }
 
-    // dungeon battle functionpublic void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel) throws FileNotFoundException {
-    ////        // print out what enemies did on their turn
-    ////        System.out.println();
-    ////        System.out.println("Enemy turn");
-    ////        ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
-    ////        for (Enemy enemy : enemies){
-    ////            // takes player defence into account when calculating damage taken
-    ////            int damage = enemy.getAttack()*(100/defence);
-    ////            health -= damage;
-    ////            System.out.println(enemy.getName() + " has dealt " + damage + " damage");
-    ////        }
-    ////        // check if player has died
-    ////        if (health <= 0){
-    ////            died();
-    ////        }
-    ////        // if player is still alive, then do player's turn
-    ////        else{
-    ////            System.out.println();
-    ////            System.out.println("Your turn");
-    ////            // battle each enemy
-    ////            for (Enemy enemy : enemies){
-    ////                enemy.battle(YTInfo, ETInfo);
-    ////            }
-    ////            System.out.println();
-    ////            // update the enemies on the dungeon (remove dead enemies)
-    ////            Main.dungeon.updateEnemies();
-    ////        }
-    ////    }
-//
+    // dungeon battle function
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox) throws IOException {
+        // print out what enemies did on their turn
+        ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
+        for (Enemy enemy : enemies){
+            // takes player defence into account when calculating damage taken
+            int damage = enemy.getAttack()*(100/defence);
+            health -= damage;
+            ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
+            if (health <= 0){
+                healthBar.setProgress(0);
+                healthLabel.setText("0/" + maxHealth);
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("died.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                Stage stage = (Stage) healthLabel.getScene().getWindow();
+                stage.setTitle("Wen Ymar Elad");
+                stage.setScene(scene);
+                stage.show();
+            }
+            else{
+                healthBar.setProgress((double) health/maxHealth);
+                healthLabel.setText(health + "/" + maxHealth);
+            }
+        }
+
+        // battle each enemy
+        for (Enemy enemy : enemies){
+            enemy.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel);
+        }
+        // update the enemies on the dungeon (remove dead enemies)
+        healthBar.setProgress((double) health/maxHealth);
+        healthLabel.setText(health + "/" + maxHealth);
+        Main.dungeon.updateEnemies();
+        if (Main.dungeon.getAllEnemiesDead()){
+            Main.dungeon.dungeonCleared(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox);
+        }
+        }
+
 
     // function for when player dies
     public void died(String choice) throws FileNotFoundException {
