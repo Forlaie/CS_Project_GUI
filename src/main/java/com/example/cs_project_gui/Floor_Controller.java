@@ -116,7 +116,7 @@ public class Floor_Controller implements Initializable {
     protected void clickItemInfo() throws IOException {
         Main.previousScreen = "floor.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("itemInfo.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");
         stage.setScene(scene);
@@ -160,7 +160,7 @@ public class Floor_Controller implements Initializable {
     protected void clickCheckInventory() throws IOException {
         Main.previousScreen = "floor.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("inventory.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");
         stage.setScene(scene);
