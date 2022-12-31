@@ -3,6 +3,7 @@ package com.example.cs_project_gui;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 
 // child of Enemy class (inheritance)
 public class Vampire extends Enemy{
@@ -13,7 +14,7 @@ public class Vampire extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account vampire sucking blood (stealing player health)
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
@@ -21,13 +22,16 @@ public class Vampire extends Enemy{
         ETInfo.appendText("Vampire sucked " + suckedBlood + " hp " + "from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
+            enemyVBox.getChildren().remove(infoVBox);
             Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
     }
 
     // override dungeon battle function from parent class (Enemy)
     // takes into account vampire sucking blood (stealing player health)
-    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
@@ -35,8 +39,11 @@ public class Vampire extends Enemy{
         System.out.println("Vampire sucked " + suckedBlood + " hp from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
+            enemyVBox.getChildren().remove(infoVBox);
             Ddied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
     }
 
     // when vampire dies in a dungeon, only drop vampire materials

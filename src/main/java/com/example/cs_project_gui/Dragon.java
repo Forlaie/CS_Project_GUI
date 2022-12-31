@@ -3,6 +3,7 @@ package com.example.cs_project_gui;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 
 // child of Enemy class (inheritance)
 public class Dragon extends Enemy{
@@ -16,13 +17,16 @@ public class Dragon extends Enemy{
 
     // override floor battle function from parent class (Enemy)
     // takes into account dragon defence when calculating player damage
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
         YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
             Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            enemyVBox.getChildren().remove(infoVBox);
         }
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
     }
 
     // when dragon dies, instead of dropping items, it permanently increases one of your stats by a random amount (1-10)

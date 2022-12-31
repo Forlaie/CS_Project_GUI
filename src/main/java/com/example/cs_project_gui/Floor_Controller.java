@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -65,12 +66,17 @@ public class Floor_Controller implements Initializable {
     private Button continueToNextFloorButton;
     @FXML
     private HBox doneHBox;
+    @FXML
+    private VBox enemyVBox;
     public static String YT;
     public static String ET;
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
+        for (Enemy enemy : Main.floor.getEnemies()){
+            enemyVBox.getChildren().add(enemy.getInfoVBox());
+        }
         if (Main.floor.getAllEnemiesDead()){
             floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
             fightHBox.setVisible(false);
@@ -250,7 +256,7 @@ public class Floor_Controller implements Initializable {
 
     @FXML
     protected void clickFight() throws IOException {
-        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox);
+        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox, enemyVBox);
 //        Thread.sleep(1000);
 //        Main.player.FbattleE(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
     }

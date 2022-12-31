@@ -2,15 +2,25 @@ package com.example.cs_project_gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class Enemy {
     protected String name;
     protected int health;
+    protected int maxHealth;
     protected int attack;
     protected String description;
+    //protected ImageView image;
+    protected Label hLabel = new Label();
+    protected ProgressBar hBar = new ProgressBar();
+    protected VBox infoVBox;
     private static Enemy[] possibleEnemies = {
             new Enemy("Enemy", 10*Floor.floorLevel, Floor.floorLevel, """
             Enemies are people who have been corrupted by \nthe pollution"""),
@@ -34,8 +44,22 @@ public class Enemy {
     public Enemy(String name, int health, int attack, String description){
         this.name = name;
         this.health = health;
+        maxHealth = health;
         this.attack = attack;
         this.description = description;
+//        InputStream stream = new FileInputStream("D:\images\elephant.jpg");
+//        Image image = new Image(stream);
+//        ImageView imageView = new ImageView();
+//        //Setting image to the image view
+//        imageView.setImage(image)
+        //image = new ImageView("Enemy_Hilichurl.png");
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
+        Label nameLabel = new Label(this.name);
+        HBox h = new HBox(5);
+        h.getChildren().addAll(hBar, hLabel);
+        infoVBox = new VBox();
+        infoVBox.getChildren().addAll(nameLabel, h);
     }
 
     public String getName(){
@@ -52,6 +76,18 @@ public class Enemy {
 
     public int getAttack(){
         return attack;
+    }
+
+    public Label gethLabel(){
+        return hLabel;
+    }
+
+    public ProgressBar gethBar(){
+        return hBar;
+    }
+
+    public VBox getInfoVBox(){
+        return infoVBox;
     }
 
     public static ObservableList<Enemy> getObservablePossibleEnemies(){
@@ -91,12 +127,15 @@ public class Enemy {
     }
 
     // battling in a floor
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         if (health <= 0){
+            enemyVBox.getChildren().remove(infoVBox);
             Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
     }
 
     // dying in a floor (drop random item)
@@ -109,12 +148,15 @@ public class Enemy {
     }
 
     // battling in a dungeon
-    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
         YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         if (health <= 0){
+            enemyVBox.getChildren().remove(infoVBox);
             Ddied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         }
+        hLabel.setText(this.health + "/" + maxHealth);
+        hBar.setProgress((double) this.health/maxHealth);
     }
 
     // when enemy dies in a dungeon, only drop enemy materials

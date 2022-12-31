@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -100,26 +101,30 @@
             </VBox>
          </children>
       </HBox>
-      <ImageView fitHeight="195.0" fitWidth="79.0" layoutX="101.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@character.png" />
-         </image>
-      </ImageView>
-      <HBox alignment="CENTER" layoutX="84.0" layoutY="43.0" spacing="5.0">
+      <VBox alignment="CENTER" layoutX="144.0" layoutY="43.0">
          <children>
-            <Label text="HP">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <ProgressBar fx:id="healthBar" prefHeight="18.0" prefWidth="79.0" progress="1.0" />
-            <Label fx:id="healthLabel" text="/">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="HP">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="healthBar" prefHeight="18.0" prefWidth="79.0" progress="1.0" />
+                  <Label fx:id="healthLabel" text="/">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="195.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@character.png" />
+               </image>
+            </ImageView>
          </children>
-      </HBox>
+      </VBox>
       <HBox alignment="CENTER" layoutX="266.0" prefHeight="35.0" prefWidth="334.0">
          <children>
             <Label fx:id="floorLabel" text="Floor #">
@@ -143,5 +148,10 @@
             </Button>
          </children>
       </HBox>
+      <ScrollPane layoutX="327.0" layoutY="38.0">
+         <content>
+            <VBox fx:id="enemyVBox" alignment="CENTER" prefHeight="222.0" prefWidth="258.0" spacing="5.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -65,11 +66,16 @@ public class Dungeon_Controller implements Initializable {
     private Button enterDungeonAgainButton;
     @FXML
     private HBox doneHBox;
+    @FXML
+    private VBox enemyVBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
+        for (Enemy enemy : Main.dungeon.getEnemies()){
+            enemyVBox.getChildren().add(enemy.getInfoVBox());
+        }
         if (Main.dungeon.getAllEnemiesDead()){
             dungeonLabel.setText("Dungeon cleared!");
             fightHBox.setVisible(false);
@@ -241,7 +247,7 @@ public class Dungeon_Controller implements Initializable {
 
     @FXML
     protected void clickFight() throws IOException {
-        Main.player.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox);
+        Main.player.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox, enemyVBox);
     }
 
     @FXML

@@ -18,7 +18,7 @@ public class Floor {
     // constructor to create a new floor
     // also updates static variable floorLevel that keeps track of what floor player is on
     // generates random enemies, except for floor 10 which is the LORE ENEMY
-    public Floor(){
+    public Floor() throws FileNotFoundException {
         floorLevel += 1;
         if (floorLevel != 10){
             generateEnemies();
@@ -29,39 +29,38 @@ public class Floor {
     }
 
     // overload constructor to set the floor using the save file
-    public Floor(ArrayList<String> enemyNames){
+    public Floor(ArrayList<String> enemyNames) throws FileNotFoundException {
         setFloorEnemies(enemyNames);
     }
 
     // sets the floor enemies from the save file
-    public void setFloorEnemies(ArrayList<String> enemyNames){
+    public void setFloorEnemies(ArrayList<String> enemyNames) throws FileNotFoundException {
         for (String name : enemyNames){
             switch(name) {
-                case "Enemy" -> enemies.add(new Enemy("Enemy", 10+Floor.floorLevel, 1+Floor.floorLevel, """
-            Enemies are people who have been corrupted by the pollution"""));
-                case "Vampire" -> enemies.add(new Vampire("Vampire", 15+Floor.floorLevel, 3+Floor.floorLevel, """
+                case "Enemy" -> enemies.add(new Enemy("Enemy", 10*Floor.floorLevel, Floor.floorLevel, """
+            Enemies are people who have been corrupted by \nthe pollution"""));
+                case "Vampire" -> enemies.add(new Vampire("Vampire", 15*Floor.floorLevel, 3*Floor.floorLevel, """
                     Vampires are creatures that suck your blood
                     They steal your hp and heal themselves
-                    (scaled according to how much hp you have)"""));
-                case "Golem" -> enemies.add(new Golem("Golem", 20+Floor.floorLevel, 2+Floor.floorLevel, 5+Floor.floorLevel, """
-                    Golems are creatures made of rock and stone that have become sentient due to the pollution
-                    They have strong defence, so attacks will deal less damage than usual
-                    (scaled according to how much defence the golem has)"""));
-                case "Troll" -> enemies.add(new Troll("Troll", 5+Floor.floorLevel, 2+Floor.floorLevel, """
-                    Trolls are mischievous mythical creatures that love to play tricks
-                    Trolls will steal an item from your inventory when they die, so equip any items you want to keep safe"""));
-                case "Dragon" -> enemies.add(new Dragon("Dragon", 50+Floor.floorLevel, 10+Floor.floorLevel, 10+Floor.floorLevel, """
+                    (scaled from your hp)"""));
+                case "Golem" -> enemies.add(new Golem("Golem", 20*Floor.floorLevel, 2*Floor.floorLevel, 5*Floor.floorLevel, """
+                    Golems are creatures made of rock and stone that \nhave become sentient due to the pollution
+                    They have strong defence, so attacks will deal less \ndamage than usual
+                    (scaled from golem defence)"""));
+                case "Troll" -> enemies.add(new Troll("Troll", 5*Floor.floorLevel, 2*Floor.floorLevel, """
+                    Trolls are mischievous mythical creatures that love \nto play tricks
+                    Trolls will steal an item from your inventory when \nthey die, so equip any items you want to keep safe \nand drink any potions you want to use asap"""));
+                case "Dragon" -> enemies.add(new Dragon("Dragon", 50*Floor.floorLevel, 10*Floor.floorLevel, 10*Floor.floorLevel, """
                     Dragons are extremely powerful creatures
-                    Dragons have lots of health, attack, and defence, so they're difficult to defeat
-                    However, once defeated, they drop special dragon armour that can't be found anywhere else
-                    These items have higher stats than all other items"""));
+                    Dragons have lots of health, attack, and defence, so \nthey're difficult to defeat
+                    However, once defeated, you can gain stat bonuses \nto your health, defence or attack"""));
                 case "**********" -> enemies.add(new Reaper("**********", 100, 10, "*** **** ****"));
             }
         }
     }
 
     // generate random enemies using the static method created in Enemy class
-    public void generateEnemies(){
+    public void generateEnemies() throws FileNotFoundException {
         for (int i = 0; i < floorLevel; i++){
             enemies.add(Enemy.generateRandomEnemy());
         }

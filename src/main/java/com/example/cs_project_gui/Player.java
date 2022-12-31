@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -563,7 +564,7 @@ public class Player {
     }
 
     // floor battle function
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) throws IOException {
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox, VBox enemyVBox) throws IOException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
@@ -593,7 +594,7 @@ public class Player {
         }
         // battle each enemy
         for (Enemy enemy : enemies){
-            enemy.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
+            enemy.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, enemyVBox);
         }
         healthBar.setProgress((double) health/maxHealth);
         healthLabel.setText(health + "/" + maxHealth);
@@ -664,7 +665,7 @@ public class Player {
 //    }
 
     // dungeon battle function
-    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox) throws IOException {
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox, VBox enemyVBox) throws IOException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
         for (Enemy enemy : enemies){
@@ -690,7 +691,7 @@ public class Player {
 
         // battle each enemy
         for (Enemy enemy : enemies){
-            enemy.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel);
+            enemy.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, enemyVBox);
         }
         // update the enemies on the dungeon (remove dead enemies)
         healthBar.setProgress((double) health/maxHealth);
