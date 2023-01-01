@@ -1,5 +1,6 @@
 package com.example.cs_project_gui;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableBooleanValue;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +20,8 @@ public class Floor {
     // also updates static variable floorLevel that keeps track of what floor player is on
     // generates random enemies, except for floor 10 which is the LORE ENEMY
     public Floor() throws FileNotFoundException {
+        Main.YT = new SimpleStringProperty("");
+        Main.ET = new SimpleStringProperty("");
         floorLevel += 1;
         if (floorLevel != 10){
             generateEnemies();
@@ -30,6 +33,8 @@ public class Floor {
 
     // overload constructor to set the floor using the save file
     public Floor(ArrayList<String> enemyNames) throws FileNotFoundException {
+        Main.YT = new SimpleStringProperty("");
+        Main.ET = new SimpleStringProperty("");
         setFloorEnemies(enemyNames);
     }
 

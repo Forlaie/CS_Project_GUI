@@ -33,10 +33,10 @@ public class Troll extends Enemy{
         Main.player.defeatedMonster(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         if (!Main.player.getInventory().isEmpty()){
             String itemName = steal();
-            ETInfo.appendText(name + " steals " + itemName + " before dying\n");
+            Main.ET.setValue(Main.ET.getValue() + name + " steals " + itemName + " before dying\n");
         }
         else{
-            ETInfo.appendText(name + " has died\n");
+            Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         }
         Main.floor.addDeadEnemy(this);
     }

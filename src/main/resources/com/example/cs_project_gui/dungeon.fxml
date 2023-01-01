@@ -148,7 +148,7 @@
             </ImageView>
          </children>
       </VBox>
-      <ScrollPane layoutX="328.0" layoutY="48.0">
+      <ScrollPane layoutX="328.0" layoutY="48.0" prefHeight="212.0" prefWidth="260.0">
          <content>
             <VBox fx:id="enemyVBox" alignment="CENTER" prefHeight="222.0" prefWidth="258.0" spacing="5.0" />
          </content>

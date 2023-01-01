@@ -19,7 +19,7 @@ public class Golem extends Enemy{
     // takes into account golem defence when calculating player damage
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
-        YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
@@ -33,7 +33,7 @@ public class Golem extends Enemy{
     // takes into account golem defence when calculating player damage
     public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
-        System.out.println("You have dealt " + playerDamage + " damage to " + name);
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
@@ -45,9 +45,9 @@ public class Golem extends Enemy{
 
     // when golem dies in a dungeon, only drop golem materials
     public void Ddied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        ETInfo.appendText(name + " has died\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         Main.player.defeatedMonster(Item.materialDrops[2], YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-        ETInfo.appendText(name + " dropped " + Item.materialDrops[2].getName() + "\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " dropped " + Item.materialDrops[2].getName() + "\n");
         Main.dungeon.addDeadEnemy(this);
     }
 }

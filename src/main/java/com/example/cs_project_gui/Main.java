@@ -1,6 +1,7 @@
 package com.example.cs_project_gui;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,11 +18,12 @@ public class Main extends Application {
     public static String previousScreen;
     public static Floor floor;
     public static Dungeon dungeon;
+    public static SimpleStringProperty YT;
+    public static SimpleStringProperty ET;
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("firstScreen.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Wen Ymar Elad");
         stage.setScene(scene);

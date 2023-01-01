@@ -129,7 +129,7 @@ public class Enemy {
     // battling in a floor
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
-        YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
             Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -140,17 +140,17 @@ public class Enemy {
 
     // dying in a floor (drop random item)
     public void Fdied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        ETInfo.appendText(name + " has died\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         Item item = Item.generateRandomDrop();
         Main.player.defeatedMonster(item, YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-        ETInfo.appendText(name + " dropped " + item.getName() + "\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " dropped " + item.getName() + "\n");
         Main.floor.addDeadEnemy(this);
     }
 
     // battling in a dungeon
     public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
-        YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
             Ddied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -161,9 +161,9 @@ public class Enemy {
 
     // when enemy dies in a dungeon, only drop enemy materials
     public void Ddied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        ETInfo.appendText(name + " has died\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         Main.player.defeatedMonster(Item.materialDrops[0], YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-        ETInfo.appendText(name + " dropped " + Item.materialDrops[0].getName() + "\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " dropped " + Item.materialDrops[0].getName() + "\n");
         Main.dungeon.addDeadEnemy(this);
     }
 }

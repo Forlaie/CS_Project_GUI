@@ -1,5 +1,6 @@
 package com.example.cs_project_gui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -73,6 +74,8 @@ public class Dungeon_Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
+        YTInfo.textProperty().bind(Main.YT);
+        ETInfo.textProperty().bind(Main.ET);
         for (Enemy enemy : Main.dungeon.getEnemies()){
             enemyVBox.getChildren().add(enemy.getInfoVBox());
         }

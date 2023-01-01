@@ -18,7 +18,7 @@ public class Reaper extends Enemy{
         lore();
         Item item = new Item("Ancient seed", 0, "An ancient seed left behind from the future. Perhaps you should plant it?");
         Main.player.defeatedMonster(item, YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-        ETInfo.appendText(name + " dropped " + item.getName() + "\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " dropped " + item.getName() + "\n");
         Main.floor.addDeadEnemy(this);
     }
 

@@ -1,4 +1,5 @@
 package com.example.cs_project_gui;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
@@ -12,10 +13,12 @@ public class Dungeon {
 
     public static String enemyType;
     public static String difficultyLevel;
-    private int difficulty;
+    private final int difficulty;
 
     // constructor to create a dungeon
     public Dungeon(int difficulty){
+        Main.YT = new SimpleStringProperty("");
+        Main.ET = new SimpleStringProperty("");
         this.difficulty = difficulty;
         switch (enemyType) {
             case "Enemy" -> enemyDungeon();

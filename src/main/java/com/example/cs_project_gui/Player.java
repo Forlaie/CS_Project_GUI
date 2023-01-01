@@ -532,7 +532,7 @@ public class Player {
     // called when xp reaches the required amount to level uo
     // increases stats
     public void levelUp(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        YTInfo.appendText("Level up!\n");
+        Main.YT.setValue(Main.YT.getValue() + "Level up!\n");
         xp = xp - level*10;
         level += 1;
         maxHealth += 10;
@@ -544,7 +544,7 @@ public class Player {
 
     // defeat a monster that drops an item
     public void defeatedMonster(Item item, TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        YTInfo.appendText("Gained " + (10+Floor.floorLevel) + " xp!\n");
+        Main.YT.setValue(Main.YT.getValue() + "Gained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
             levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -555,7 +555,7 @@ public class Player {
 
     // defeat a monster that doesn't drop an item
     public void defeatedMonster(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        YTInfo.appendText("Gained " + (10+Floor.floorLevel) + " xp!\n");
+        Main.YT.setValue(Main.YT.getValue() + "Gained " + (10+Floor.floorLevel) + " xp!\n");
         xp += 10+Floor.floorLevel;
         if (xp >= level*10){
             levelUp(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -571,8 +571,7 @@ public class Player {
             // takes player defence into account when calculating damage taken
             int damage = enemy.getAttack()*(100/defence);
             health -= damage;
-            ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
-            Floor_Controller.ET += enemy.getName() + " has dealt " + damage + " damage\n";
+            Main.ET.setValue(Main.ET.getValue() + enemy.getName() + " has dealt " + damage + " damage\n");
             // check if player has died
             if (health <= 0){
                 healthBar.setProgress(0);
@@ -672,7 +671,7 @@ public class Player {
             // takes player defence into account when calculating damage taken
             int damage = enemy.getAttack()*(100/defence);
             health -= damage;
-            ETInfo.appendText(enemy.getName() + " has dealt " + damage + " damage\n");
+            Main.ET.setValue(Main.ET.getValue() + enemy.getName() + " has dealt " + damage + " damage\n");
             if (health <= 0){
                 healthBar.setProgress(0);
                 healthLabel.setText("0/" + maxHealth);

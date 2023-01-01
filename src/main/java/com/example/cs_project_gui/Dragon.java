@@ -19,7 +19,8 @@ public class Dragon extends Enemy{
     // takes into account dragon defence when calculating player damage
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/100.0));
-        YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + playerDamage + " damage to " + name + "\n");
+        //YTInfo.appendText("You have dealt " + playerDamage + " damage to " + name + "\n");
         health -= playerDamage;
         if (health <= 0){
             Fdied(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
@@ -31,20 +32,20 @@ public class Dragon extends Enemy{
 
     // when dragon dies, instead of dropping items, it permanently increases one of your stats by a random amount (1-10)
     public void Fdied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        ETInfo.appendText(name + " has died\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         int stat = (int) (Math.random()*3);
         int value = (int) (Math.random()*10)+1;
         switch (stat){
             case 0 -> {
-                YTInfo.appendText("\nHealth stat increased by " + value + "!\n\n");
+                Main.YT.setValue(Main.YT.getValue() + "\nHealth stat increased by " + value + "!\n");
                 Main.player.setHealth(Main.player.getHealth()+value);
             }
             case 1 -> {
-                YTInfo.appendText("\nDefence stat increased by " + value + "!\n\n");
+                Main.YT.setValue(Main.YT.getValue() + "Defence stat increased by " + value + "!\n");
                 Main.player.setDefence(Main.player.getDefence()+value);
             }
             case 2 -> {
-                YTInfo.appendText("\nAttack stat increased by " + value + "!\n\n");
+                Main.YT.setValue(Main.YT.getValue() + "Attack stat increased by " + value + "!\n");
                 Main.player.setAttack(Main.player.getAttack()+value);
             }
         }

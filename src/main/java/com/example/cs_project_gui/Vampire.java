@@ -16,10 +16,10 @@ public class Vampire extends Enemy{
     // takes into account vampire sucking blood (stealing player health)
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
-        YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
         health += suckedBlood;
-        ETInfo.appendText("Vampire sucked " + suckedBlood + " hp " + "from you\n");
+        Main.ET.setValue(Main.ET.getValue() + "Vampire sucked " + suckedBlood + " hp " + "from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
@@ -33,10 +33,9 @@ public class Vampire extends Enemy{
     // takes into account vampire sucking blood (stealing player health)
     public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
         health -= Main.player.getAttack();
-        YTInfo.appendText("You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
+        Main.YT.setValue(Main.YT.getValue() + "You have dealt " + Main.player.getAttack() + " damage to " + name + "\n");
         int suckedBlood = (int) (Main.player.getHealth()*0.05);
         health += suckedBlood;
-        System.out.println("Vampire sucked " + suckedBlood + " hp from you\n");
         Main.player.setHealth(Main.player.getHealth() - suckedBlood);
         if (health <= 0){
             enemyVBox.getChildren().remove(infoVBox);
@@ -48,9 +47,9 @@ public class Vampire extends Enemy{
 
     // when vampire dies in a dungeon, only drop vampire materials
     public void Ddied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-        ETInfo.appendText(name + " has died\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " has died\n");
         Main.player.defeatedMonster(Item.materialDrops[1], YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-        ETInfo.appendText(name + " dropped " + Item.materialDrops[1].getName() + "\n");
+        Main.ET.setValue(Main.ET.getValue() + name + " dropped " + Item.materialDrops[1].getName() + "\n");
         Main.dungeon.addDeadEnemy(this);
     }
 }
