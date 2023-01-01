@@ -1,7 +1,6 @@
 package com.example.cs_project_gui;
-import javafx.scene.control.Label;
 
-import java.io.IOException;
+import javafx.scene.control.Label;
 import java.util.Scanner;
 import java.util.Set;
 public class Shop {

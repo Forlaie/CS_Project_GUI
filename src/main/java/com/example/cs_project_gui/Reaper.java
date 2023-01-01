@@ -5,8 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
-import java.io.FileNotFoundException;
-
 public class Reaper extends Enemy{
     // inherits constructor and instance variables of Enemy class
     public Reaper(String name, int health, int attack, String description) {

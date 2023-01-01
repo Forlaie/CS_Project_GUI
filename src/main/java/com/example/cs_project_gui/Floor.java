@@ -1,13 +1,10 @@
 package com.example.cs_project_gui;
-import javafx.beans.property.SimpleBooleanProperty;
+
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableBooleanValue;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 

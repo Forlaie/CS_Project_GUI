@@ -1,10 +1,10 @@
 package com.example.cs_project_gui;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-
 import java.util.ArrayList;
 
 public class Dungeon {

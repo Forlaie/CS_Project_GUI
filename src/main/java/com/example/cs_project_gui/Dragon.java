@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 
 // child of Enemy class (inheritance)
 public class Dragon extends Enemy{
-    private int defence;
+    private final int defence;
 
     // inherits constructor and instance variables of Enemy class, plus its own instance variable of defence
     public Dragon(String name, int health, int attack, int defence, String description) {

@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,10 +15,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-//import java.io.File;
-//import java.io.FileNotFoundException;
-//import java.util.*;
-//
 public class Player {
     //lombok
     private String username;
@@ -602,66 +597,7 @@ public class Player {
         if (Main.floor.getAllEnemiesDead()){
             Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox);
         }
-//        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-//
-//        // Execute timer after 2 seconds
-//        service.schedule(runnableTask(YTInfo, ETInfo, healthBar, healthLabel, floorLabel), 3, TimeUnit.SECONDS);
     }
-
-//    private Runnable runnableTask(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) {
-//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
-//        // battle each enemy
-//        for (Enemy enemy : enemies){
-//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//        healthBar.setProgress((double) health/maxHealth);
-//        healthLabel.setText(health + "/" + maxHealth);
-//        // update the enemies on the floor (remove dead enemies)
-//        Main.floor.updateEnemies();
-//        if (Main.floor.getAllEnemiesDead()){
-//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//        return null;
-//    }
-
-//    private class FbattleE implements Runnable {
-//
-//        public void run()
-//        {
-//            System.out.println(Thread.currentThread().getName()
-//                    + ", executing run() method!");
-//        }
-//    }
-
-//    Runnable runnableTask = (TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel) -> {
-//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
-//        // battle each enemy
-//        for (Enemy enemy : enemies){
-//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//        healthBar.setProgress((double) health/maxHealth);
-//        healthLabel.setText(health + "/" + maxHealth);
-//        // update the enemies on the floor (remove dead enemies)
-//        Main.floor.updateEnemies();
-//        if (Main.floor.getAllEnemiesDead()){
-//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//    };
-
-//    public void FbattleE(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
-//        ArrayList<Enemy> enemies = Main.floor.getEnemies();
-//        // battle each enemy
-//        for (Enemy enemy : enemies){
-//            enemy.battle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//        healthBar.setProgress((double) health/maxHealth);
-//        healthLabel.setText(health + "/" + maxHealth);
-//        // update the enemies on the floor (remove dead enemies)
-//        Main.floor.updateEnemies();
-//        if (Main.floor.getAllEnemiesDead()){
-//            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
-//        }
-//    }
 
     // dungeon battle function
     public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox, VBox enemyVBox) throws IOException {

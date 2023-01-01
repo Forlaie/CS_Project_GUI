@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -32,7 +31,6 @@ public class ChangePassword_Controller {
         String newPassword = newPasswordField.getText();
         String confirmPassword = confirmPasswordField.getText();
         String hashedOldPassword = Main.hashPassword(oldPassword);
-        //if (oldPassword == null )
         if (!Main.player.getPassword().equals(hashedOldPassword)){
             messageLabel.setText("Original password does not match. Please try again");
         }
