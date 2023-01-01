@@ -79,20 +79,12 @@ public class Floor_Controller implements Initializable {
         if (Main.floor.getAllEnemiesDead()){
             floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
             fightHBox.setVisible(false);
-//            fightButton.setDefaultButton(false);
-//            fleeButton.setCancelButton(false);
             doneHBox.setVisible(true);
-//            exitFloorButton.setCancelButton(true);
-//            continueToNextFloorButton.setDefaultButton(true);
         }
         else{
             floorLabel.setText("Floor " + Floor.floorLevel);
             fightHBox.setVisible(true);
-//            fightButton.setDefaultButton(true);
-//            fleeButton.setCancelButton(true);
             doneHBox.setVisible(false);
-//            exitFloorButton.setCancelButton(false);
-//            continueToNextFloorButton.setDefaultButton(false);
         }
     }
     @FXML
@@ -256,8 +248,6 @@ public class Floor_Controller implements Initializable {
     @FXML
     protected void clickFight() throws IOException {
         Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox, enemyVBox);
-//        Thread.sleep(1000);
-//        Main.player.FbattleE(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
     }
 
     @FXML

@@ -9,8 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Floor {
-    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-    private ArrayList<Enemy> deadEnemies = new ArrayList<Enemy>();
+    private final ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    private final ArrayList<Enemy> deadEnemies = new ArrayList<Enemy>();
     public static int floorLevel;
 
     // constructor to create a new floor
@@ -62,7 +62,7 @@ public class Floor {
     }
 
     // generate random enemies using the static method created in Enemy class
-    public void generateEnemies() throws FileNotFoundException {
+    public void generateEnemies() {
         for (int i = 0; i < floorLevel; i++){
             enemies.add(Enemy.generateRandomEnemy());
         }

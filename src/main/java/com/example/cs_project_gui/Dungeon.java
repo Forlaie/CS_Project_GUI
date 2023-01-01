@@ -8,8 +8,8 @@ import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 
 public class Dungeon {
-    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-    private ArrayList<Enemy> deadEnemies = new ArrayList<Enemy>();
+    private final ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    private final ArrayList<Enemy> deadEnemies = new ArrayList<Enemy>();
 
     public static String enemyType;
     public static String difficultyLevel;

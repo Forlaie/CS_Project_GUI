@@ -101,9 +101,7 @@ public class Login_Controller {
             }
             catch (FileNotFoundException e) {
                 System.out.println("Can't read files");
-            } catch (NoSuchAlgorithmException e) {
-                System.out.println("");
-            }
+            } catch (NoSuchAlgorithmException ignored) {}
         }
     }
 

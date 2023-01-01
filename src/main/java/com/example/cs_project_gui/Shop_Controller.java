@@ -1,7 +1,6 @@
 package com.example.cs_project_gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,8 +44,7 @@ public class Shop_Controller implements Initializable {
             p.getValue().getTextField().clear();
             p.getValue().getTextField().setDisable(true);
             int intValue = p.getValue().getCost();
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         costColumn.setCellValueFactory(new PropertyValueFactory<Potion, Integer>("cost"));
         buyAmountColumn.setCellValueFactory(new PropertyValueFactory<Potion, TextField>("textField"));

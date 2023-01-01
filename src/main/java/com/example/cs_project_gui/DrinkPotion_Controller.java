@@ -1,7 +1,6 @@
 package com.example.cs_project_gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,8 +40,7 @@ public class DrinkPotion_Controller implements Initializable {
             p.getValue().getTextField().clear();
             p.getValue().getTextField().setDisable(true);
             int intValue = Main.player.getInventory().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         useColumn.setCellValueFactory(new PropertyValueFactory<Potion, TextField>("textField"));
         tableView.setItems(Main.player.getObservableInventory());

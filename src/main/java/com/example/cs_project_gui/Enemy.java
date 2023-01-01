@@ -75,14 +75,6 @@ public class Enemy {
         return attack;
     }
 
-    public Label gethLabel(){
-        return hLabel;
-    }
-
-    public ProgressBar gethBar(){
-        return hBar;
-    }
-
     public VBox getInfoVBox(){
         return infoVBox;
     }

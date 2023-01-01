@@ -1,7 +1,6 @@
 package com.example.cs_project_gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -81,8 +80,7 @@ public class Smithery_Controller implements Initializable {
             p.getValue().getTextField().clear();
             p.getValue().getTextField().setDisable(true);
             int intValue = Main.player.getMaterials().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         SuseColumn.setCellValueFactory(new PropertyValueFactory<Item, TextField>("textField"));
         swordTable.setItems(Main.player.getObservableSwordMaterials());
@@ -96,8 +94,7 @@ public class Smithery_Controller implements Initializable {
             p.getValue().getTextField().clear();
             p.getValue().getTextField().setDisable(true);
             int intValue = Main.player.getMaterials().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         HuseColumn.setCellValueFactory(new PropertyValueFactory<Item, TextField>("textField"));
         shieldTable.setItems(Main.player.getObservableShieldMaterials());
@@ -111,8 +108,7 @@ public class Smithery_Controller implements Initializable {
             p.getValue().getTextField().clear();
             p.getValue().getTextField().setDisable(true);
             int intValue = Main.player.getMaterials().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         AuseColumn.setCellValueFactory(new PropertyValueFactory<Item, TextField>("textField"));
         armourTable.setItems(Main.player.getObservableArmourMaterials());

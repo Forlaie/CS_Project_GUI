@@ -17,7 +17,6 @@ public class Item {
     protected int attack;
     protected int cost;
     protected String description;
-    protected String stats;
     protected CheckBox checkBox;
     protected TextField textField;
 
@@ -96,10 +95,6 @@ public class Item {
 
     public String getDescription(){
         return description;
-    }
-
-    public String getStats(){
-        return "+" + health + " hp, +" + defence + " def, +" + attack + " atk, " + cost + " coins";
     }
 
     public int getHealth() {

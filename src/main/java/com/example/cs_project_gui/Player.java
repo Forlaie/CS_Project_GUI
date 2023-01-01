@@ -238,11 +238,6 @@ public class Player {
         coins -= used;
     }
 
-    // get whether player is dead or not
-//    public boolean getIsDead(){
-//        return isDead;
-//    }
-
     // get player equipped items
     public Item[] getEquipped() {
         return equipped;
@@ -256,66 +251,6 @@ public class Player {
     // get player inventory
     public LinkedHashMap<Potion, Integer> getInventory(){
         return inventory;
-    }
-
-    // get the amount of enemy material player has
-    public int getEnemyMaterials(){
-        if (materials.get(Item.materialDrops[0]) != null){
-            return materials.get(Item.materialDrops[0]);
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // get the amount of vampire material player has
-    public int getVampireMaterials(){
-        if (materials.get(Item.materialDrops[1]) != null){
-            return materials.get(Item.materialDrops[1]);
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // get the amount of golem material player has
-    public int getGolemMaterials(){
-        if (materials.get(Item.materialDrops[2]) != null){
-            return materials.get(Item.materialDrops[2]);
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // get the amount of swords player has
-    public int getSwords(){
-        if (materials.get(Item.weaponDrops[0]) != null){
-            return materials.get(Item.weaponDrops[0]);
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // get the amount of shields player has
-    public int getShields(){
-        if (materials.get(Item.weaponDrops[1]) != null){
-            return materials.get(Item.weaponDrops[1]);
-        }
-        else{
-            return 0;
-        }
-    }
-
-    // get the amount of armours player has
-    public int getArmours(){
-        if (materials.get(Item.weaponDrops[2]) != null){
-            return materials.get(Item.weaponDrops[2]);
-        }
-        else{
-            return 0;
-        }
     }
 
     public void setDefence(int defence){
@@ -571,8 +506,6 @@ public class Player {
             if (health <= 0){
                 healthBar.setProgress(0);
                 healthLabel.setText("0/" + maxHealth);
-                //Thread.sleep(1000);
-                //died();
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("died.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                 Stage stage = (Stage) healthLabel.getScene().getWindow();
@@ -583,7 +516,6 @@ public class Player {
             else{
                 healthBar.setProgress((double) health/maxHealth);
                 healthLabel.setText(health + "/" + maxHealth);
-                //Thread.sleep(1000);
             }
         }
         // battle each enemy

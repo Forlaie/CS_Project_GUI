@@ -1,7 +1,6 @@
 package com.example.cs_project_gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -46,8 +45,7 @@ public class Inventory_Controller implements Initializable {
         MnameColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
         MamountColumn.setCellValueFactory(p -> {
             int intValue = Main.player.getMaterials().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         materialTable.setItems(Main.player.getObservableMaterials());
 
@@ -55,8 +53,7 @@ public class Inventory_Controller implements Initializable {
         //IamountColumn.setCellValueFactory(new PropertyValueFactory<Potion, Integer>("amount"));
         IamountColumn.setCellValueFactory(p -> {
             int intValue = Main.player.getInventory().get(p.getValue());
-            ObservableValue<Integer> obsInt = new SimpleIntegerProperty(intValue).asObject();
-            return obsInt;
+            return new SimpleIntegerProperty(intValue).asObject();
         });
         inventoryTable.setItems(Main.player.getObservableInventory());
     }
