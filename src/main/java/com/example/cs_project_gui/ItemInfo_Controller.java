@@ -35,6 +35,7 @@ public class ItemInfo_Controller implements Initializable {
     @FXML
     private TableColumn<Potion, String> PdescriptionColumn;
 
+    // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         WnameColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
@@ -49,6 +50,8 @@ public class ItemInfo_Controller implements Initializable {
         PdescriptionColumn.setCellValueFactory(new PropertyValueFactory<Potion, String>("description"));
         potionsTable.setItems(Item.getObservablePotions());
     }
+
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

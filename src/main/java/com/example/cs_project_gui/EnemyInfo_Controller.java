@@ -21,12 +21,15 @@ public class EnemyInfo_Controller implements Initializable {
     @FXML
     private TableColumn<Enemy, String> descriptionColumn;
 
+    // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         nameColumn.setCellValueFactory(new PropertyValueFactory<Enemy, String>("name"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Enemy, String>("description"));
         tableView.setItems(Enemy.getObservablePossibleEnemies());
     }
+
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

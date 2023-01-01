@@ -26,7 +26,6 @@ public class Player {
     private int level;
     private int xp;
     private int coins;
-//    private boolean isDead;
     public Item[] equipped = {
             new Item("Sword", 0, 0, 10, 10, """
                     The sword is a sturdy and reliable weapon for any warrior
@@ -56,7 +55,6 @@ public class Player {
         level = 1;
         xp = 0;
         coins = 0;
-//        isDead = false;
     }
 
     // constructor for recreating player from save file
@@ -73,7 +71,6 @@ public class Player {
         loadMaterialInfo(materialQuantities);
         loadPotionInfo(potionQuantities);
         loadWeaponInfo(swordInfo, shieldInfo, armourInfo);
-//        isDead = false;
     }
 
     // updates equipped weapon stats from save file information
@@ -129,15 +126,17 @@ public class Player {
         return username;
     }
 
-    // change player username
+    // set player username
     public void setUsername(String username){
         this.username = username;
     }
 
+    // get player password
     public String getPassword(){
         return password;
     }
 
+    // set player password
     public void setPassword(String password){
         this.password = password;
     }
@@ -146,10 +145,12 @@ public class Player {
     public int getHealth(){
         return health;
     }
+    // get player max health
     public int getMaxHealth(){
         return maxHealth;
     }
 
+    // set player max health
     public void setMaxHealth(int maxHealth){
         this.maxHealth = maxHealth;
     }
@@ -179,28 +180,33 @@ public class Player {
         return xp;
     }
 
+    // get player coins
     public int getCoins(){
         return coins;
     }
 
+    // get observable list of player equipped items (useful for tableviews)
     public ObservableList<Item> getObservableEquipped(){
         ObservableList<Item> observableEquipped = FXCollections.observableArrayList();
         observableEquipped.addAll(equipped);
         return observableEquipped;
     }
 
+    // get observable list of player inventory (useful for tableviews)
     public ObservableList<Potion> getObservableInventory(){
         ObservableList<Potion> observableInventory = FXCollections.observableArrayList();
         observableInventory.addAll(inventory.keySet());
         return observableInventory;
     }
 
+    // get observable list of player materials (useful for tableviews)
     public ObservableList<Item> getObservableMaterials(){
         ObservableList<Item> observableMaterials = FXCollections.observableArrayList();
         observableMaterials.addAll(materials.keySet());
         return observableMaterials;
     }
 
+    // get observable list of materials used to level up sword (useful for tableviews)
     public ObservableList<Item> getObservableSwordMaterials(){
         ObservableList<Item> observableSwordMaterials = FXCollections.observableArrayList();
         if (materials.get(Item.weaponDrops[0]) != null){
@@ -212,6 +218,7 @@ public class Player {
         return observableSwordMaterials;
     }
 
+    // get observable list of materials used to level up shield (useful for tableviews)
     public ObservableList<Item> getObservableShieldMaterials(){
         ObservableList<Item> observableShieldMaterials = FXCollections.observableArrayList();
         if (materials.get(Item.weaponDrops[1]) != null){
@@ -223,6 +230,7 @@ public class Player {
         return observableShieldMaterials;
     }
 
+    // get observable list of materials used to level up armour (useful for tableviews)
     public ObservableList<Item> getObservableArmourMaterials(){
         ObservableList<Item> observableArmourMaterials = FXCollections.observableArrayList();
         if (materials.get(Item.weaponDrops[2]) != null){
@@ -234,6 +242,7 @@ public class Player {
         return observableArmourMaterials;
     }
 
+    // update player coins after using them
     public void useCoins(int used){
         coins -= used;
     }
@@ -253,32 +262,45 @@ public class Player {
         return inventory;
     }
 
+    // set player defence
     public void setDefence(int defence){
         this.defence = defence;
     }
+
+    // set player attack
     public void setAttack(int attack){
         this.attack = attack;
     }
+
+    // set player level
     private void setLevel(int level) {
         this.level = level;
     }
+
+    // set player xp
     private void setXP(int xp) {
         this.xp = xp;
     }
+
+    // set player coins
     private void setCoins(int coins) {
         this.coins = coins;
     }
+
+    // clear player inventory
     private void clearInventory() {
         inventory.clear();
     }
+
+    // clear player materials
     private void clearMaterials() {
         materials.clear();
     }
 
     // update coins after selling an item
-    public void soldItem(int profit) {
-        coins += profit;
-    }
+//    public void soldItem(int profit) {
+//        coins += profit;
+//    }
 
     // upgrade an item
     public void upgradeItem(int itemChoice, Label messageLabel) throws IOException {
@@ -393,9 +415,7 @@ public class Player {
                         useSomething = true;
                         break;
                     }
-                } catch (NumberFormatException e) {
-                    //throw new RuntimeException(e);
-                }
+                } catch (NumberFormatException ignored) {}
             }
         }
         if (useSomething){

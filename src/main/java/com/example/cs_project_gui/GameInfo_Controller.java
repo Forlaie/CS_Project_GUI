@@ -11,6 +11,8 @@ import java.io.IOException;
 public class GameInfo_Controller {
     @FXML
     private Button backButton;
+
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

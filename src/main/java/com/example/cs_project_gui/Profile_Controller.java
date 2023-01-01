@@ -32,6 +32,7 @@ public class Profile_Controller implements Initializable {
     @FXML
     private Label attackLabel;
 
+    // initialize labels when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         usernameLabel.setText("Username: " + Main.player.getUsername());
@@ -44,6 +45,7 @@ public class Profile_Controller implements Initializable {
         attackLabel.setText("Attack: " + Main.player.getAttack());
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

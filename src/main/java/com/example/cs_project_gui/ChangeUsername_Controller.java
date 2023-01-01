@@ -21,6 +21,7 @@ public class ChangeUsername_Controller {
     @FXML
     private Label messageLabel;
 
+    // change username and save it to login file
     @FXML
     protected void clickSubmit() throws FileNotFoundException, NoSuchAlgorithmException {
         String username = textField.getText();
@@ -34,6 +35,7 @@ public class ChangeUsername_Controller {
         }
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

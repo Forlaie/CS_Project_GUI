@@ -67,6 +67,8 @@ public class Floor_Controller implements Initializable {
     private HBox doneHBox;
     @FXML
     private VBox enemyVBox;
+
+    // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
@@ -87,6 +89,9 @@ public class Floor_Controller implements Initializable {
             doneHBox.setVisible(false);
         }
     }
+
+    // load gameInfo screen
+    // set floor as previous screen
     @FXML
     protected void clickGameInfo() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -98,6 +103,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load enemyInfo screen
+    // set floor as previous screen
     @FXML
     protected void clickEnemyInfo() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -109,6 +116,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load itemInfo screen
+    // set floor as previous screen
     @FXML
     protected void clickItemInfo() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -120,6 +129,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load changeUsername screen
+    // set floor as previous screen
     @FXML
     protected void clickChangeUsername() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -131,6 +142,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load changePassword screen
+    // set floor as previous screen
     @FXML
     protected void clickChangePassword() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -142,6 +155,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load saveAndExit screen
+    // set floor as previous screen
     @FXML
     protected void clickSaveAndExit() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -153,6 +168,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load inventory screen
+    // set floor as previous screen
     @FXML
     protected void clickCheckInventory() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -164,6 +181,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load profile screen
+    // set floor as previous screen
     @FXML
     protected void clickCheckProfile() throws IOException {
         Main.previousScreen = "floor.fxml";
@@ -175,6 +194,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // load drinkPotion screen
+    // set floor as previous screen
     @FXML
     protected void clickDrinkPotion() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
@@ -185,6 +206,8 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // flee floor
+    // reset player info, floor info, and load home screen
     @FXML
     protected void clickFlee() throws IOException {
         try {
@@ -245,11 +268,13 @@ public class Floor_Controller implements Initializable {
         }
     }
 
+    // fight enemies in floor
     @FXML
     protected void clickFight() throws IOException {
         Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox, enemyVBox);
     }
 
+    // exit floor and load home screen
     @FXML
     protected void clickExitFloor() throws IOException {
         Main.putInfoIntoPlayerInfoFile();
@@ -263,6 +288,7 @@ public class Floor_Controller implements Initializable {
         stage.show();
     }
 
+    // create next floor and load floor screen again
     @FXML
     protected void clickContinueToNextFloor() throws IOException {
         Main.putInfoIntoPlayerInfoFile();

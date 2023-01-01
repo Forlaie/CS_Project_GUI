@@ -68,6 +68,7 @@ public class Dungeon_Controller implements Initializable {
     @FXML
     private VBox enemyVBox;
 
+    // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
@@ -88,6 +89,9 @@ public class Dungeon_Controller implements Initializable {
             doneHBox.setVisible(false);
         }
     }
+
+    // load gameInfo screen
+    // set dungeon as previous screen
     @FXML
     protected void clickGameInfo() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -99,6 +103,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load enemyInfo screen
+    // set dungeon as previous screen
     @FXML
     protected void clickEnemyInfo() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -110,6 +116,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load itemInfo screen
+    // set dungeon as previous screen
     @FXML
     protected void clickItemInfo() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -121,6 +129,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load changeUsername screen
+    // set dungeon as previous screen
     @FXML
     protected void clickChangeUsername() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -132,6 +142,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load changePassword screen
+    // set dungeon as previous screen
     @FXML
     protected void clickChangePassword() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -143,6 +155,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load saveAndExit screen
+    // set dungeon as previous screen
     @FXML
     protected void clickSaveAndExit() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -154,6 +168,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load inventory screen
+    // set dungeon as previous screen
     @FXML
     protected void clickCheckInventory() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -165,6 +181,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load profile screen
+    // set dungeon as previous screen
     @FXML
     protected void clickCheckProfile() throws IOException {
         Main.previousScreen = "dungeon.fxml";
@@ -176,6 +194,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // load drinkPotion screen
+    // set dungeon as previous screen
     @FXML
     protected void clickDrinkPotion() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
@@ -186,6 +206,8 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // flee dungeon
+    // reset player info, floor info, and load home screen
     @FXML
     protected void clickFlee() throws IOException {
         try {
@@ -246,11 +268,13 @@ public class Dungeon_Controller implements Initializable {
         }
     }
 
+    // fight enemies in dungeon
     @FXML
     protected void clickFight() throws IOException {
         Main.player.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox, enemyVBox);
     }
 
+    // exit dungeon and load home screen
     @FXML
     protected void clickExitDungeon() throws IOException {
         Main.putInfoIntoPlayerInfoFile();
@@ -262,6 +286,7 @@ public class Dungeon_Controller implements Initializable {
         stage.show();
     }
 
+    // create same dungeon again and reload dungeon screen
     @FXML
     protected void clickEnterDungeonAgain() throws IOException {
         Main.putInfoIntoPlayerInfoFile();

@@ -26,6 +26,9 @@ public class Signup_Controller {
     @FXML
     private Label messageLabel;
 
+    // confirm username and password are valid
+    // confirm password was confirmed correctly
+    // load home screen if correct, display error messages if not
     @FXML
     protected void clickSignup() throws IOException {
         String username = usernameTextField.getText();
@@ -61,6 +64,7 @@ public class Signup_Controller {
         }
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("firstScreen.fxml"));

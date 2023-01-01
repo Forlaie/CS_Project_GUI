@@ -14,11 +14,13 @@ public class SaveAndExit_Controller {
     @FXML
     private Button noButton;
 
+    // exit program
     @FXML
     protected void clickYes() {
         Platform.exit();
     }
 
+    // return to previous screen
     @FXML
     protected void clickNo() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

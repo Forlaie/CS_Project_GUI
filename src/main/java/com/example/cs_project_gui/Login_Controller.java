@@ -27,6 +27,8 @@ public class Login_Controller {
     @FXML
     private Label messageLabel;
 
+    // confirm username and password entered are correct
+    // load home screen if correct, display error messages if not
     @FXML
     protected void clickLogin() throws IOException {
         String username = usernameTextField.getText();
@@ -105,6 +107,7 @@ public class Login_Controller {
         }
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("firstScreen.fxml"));

@@ -45,6 +45,9 @@ public class HomeScreen_Controller {
     private Button shopButton;
     @FXML
     private Button smitheryButton;
+
+    // load gameInfo screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickGameInfo() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -56,6 +59,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load enemyInfo screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickEnemyInfo() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -67,6 +72,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load itemInfo screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickItemInfo() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -78,6 +85,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load changeUsername screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickChangeUsername() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -89,6 +98,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load changeUsername screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickChangePassword() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -100,6 +111,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load saveAndExit screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickSaveAndExit() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -111,6 +124,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load inventory screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickCheckInventory() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -122,6 +137,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load profile screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickCheckProfile() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -133,6 +150,8 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load drinkHealthPotion screen
+    // set homeScreen as previous screen
     @FXML
     protected void clickDrinkHealthPotion() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkHealthPotion.fxml"));
@@ -143,6 +162,7 @@ public class HomeScreen_Controller {
         stage.show();
     }
 
+    // load floor screen
     @FXML
     protected void clickFloor() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("floor.fxml"));
@@ -152,6 +172,8 @@ public class HomeScreen_Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+    // load dungeon screen
     @FXML
     protected void clickDungeon() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("dungeonCreation.fxml"));
@@ -161,6 +183,8 @@ public class HomeScreen_Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+    // load shop screen
     @FXML
     protected void clickShop() throws IOException {
         Main.previousScreen = "homeScreen.fxml";
@@ -171,6 +195,8 @@ public class HomeScreen_Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+    // load smithery screen
     @FXML
     protected void clickSmithery() throws IOException {
         Main.previousScreen = "homeScreen.fxml";

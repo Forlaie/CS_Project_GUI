@@ -36,6 +36,7 @@ public class Inventory_Controller implements Initializable {
     @FXML
     private TableColumn<Potion, Integer> IamountColumn;
 
+    // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         EnameColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
@@ -50,13 +51,14 @@ public class Inventory_Controller implements Initializable {
         materialTable.setItems(Main.player.getObservableMaterials());
 
         InameColumn.setCellValueFactory(new PropertyValueFactory<Potion, String>("name"));
-        //IamountColumn.setCellValueFactory(new PropertyValueFactory<Potion, Integer>("amount"));
         IamountColumn.setCellValueFactory(p -> {
             int intValue = Main.player.getInventory().get(p.getValue());
             return new SimpleIntegerProperty(intValue).asObject();
         });
         inventoryTable.setItems(Main.player.getObservableInventory());
     }
+
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

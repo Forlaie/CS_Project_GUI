@@ -20,6 +20,7 @@ public class Item {
     protected CheckBox checkBox;
     protected TextField textField;
 
+    // stores all the possible weapon drops and their info (used to generate random drops after defeating enemy)
     public static final Item[] weaponDrops = {
             new Item("Sword", 0, 0, 10, 10, """
                     The sword is a sturdy and reliable weapon for any \nwarrior
@@ -60,6 +61,7 @@ public class Item {
                     Costs 50 coins""")
     };
 
+    // constructor for creating weapons and potions
     public Item(String name, int health, int defence, int attack, int cost, String description){
         this.name = name;
         this.health = health;
@@ -76,6 +78,7 @@ public class Item {
         });
     }
 
+    // constructor for creating materials
     public Item(String name, int cost, String description){
         this.name = name;
         this.cost = cost;
@@ -89,38 +92,46 @@ public class Item {
         });
     }
 
+    // get item name
     public String getName(){
         return name;
     }
 
+    // get item description
     public String getDescription(){
         return description;
     }
 
+    // get item health stat
     public int getHealth() {
         return health;
     }
 
+    // get item defence stat
     public int getDefence() {
         return defence;
     }
 
+    // get item attack stat
     public int getAttack() {
         return attack;
     }
 
+    // get observable list of weapon drops (useful for tableviews)
     public static ObservableList<Item> getObservableWeaponDrops(){
         ObservableList<Item> observableWeaponDrops = FXCollections.observableArrayList();
         observableWeaponDrops.addAll(weaponDrops);
         return observableWeaponDrops;
     }
 
+    // get observable list of material drops (useful for tableviews)
     public static ObservableList<Item> getObservableMaterialDrops(){
         ObservableList<Item> observableMaterialDrops = FXCollections.observableArrayList();
         observableMaterialDrops.addAll(materialDrops);
         return observableMaterialDrops;
     }
 
+    // get observable list of potions (useful for tableviews)
     public static ObservableList<Potion> getObservablePotions(){
         ObservableList<Potion> observablePotions = FXCollections.observableArrayList();
         observablePotions.addAll(potions);
@@ -142,13 +153,16 @@ public class Item {
     public void setAttack(int attack){
         this.attack = attack;
     }
+    // get item textField (useful for tableviews later)
     public TextField getTextField(){
         return textField;
     }
+    // get item checkBox (useful for tableviews later)
     public CheckBox getCheckBox(){
         return checkBox;
     }
 
+    // method to generate random item drops after defeating an enemy
     public static Item generateRandomDrop(){
         int index;
         int getRandomDrop = (int) (Math.random()*101)+1;

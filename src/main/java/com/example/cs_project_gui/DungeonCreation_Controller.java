@@ -34,6 +34,7 @@ public class DungeonCreation_Controller implements Initializable {
     @FXML
     private Label dungeonDifficultyLabel;
 
+    // when a menu item is selected, show the corresponding description + set the next button as enabled
     @Override
     public void initialize(URL location, ResourceBundle resources){
         enemyMenuItem.setOnAction(e -> {
@@ -68,6 +69,7 @@ public class DungeonCreation_Controller implements Initializable {
         });
     }
 
+    // create selected dungeon and load dungeon screen
     @FXML
     protected void clickEnterDungeon() throws IOException {
         Dungeon.enemyType = typeMenuButton.getText();

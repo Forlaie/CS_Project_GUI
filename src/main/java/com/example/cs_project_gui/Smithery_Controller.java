@@ -70,6 +70,7 @@ public class Smithery_Controller implements Initializable {
     @FXML
     private Label AcoinsLabel;
 
+    // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         SselectColumn.setCellValueFactory(new PropertyValueFactory<Item, CheckBox>("checkBox"));
@@ -115,21 +116,28 @@ public class Smithery_Controller implements Initializable {
         AcoinsLabel.setText("Coins: " + Main.player.getCoins());
     }
 
+    // upgrade sword
+    // use amount and type of materials selected
     @FXML
     protected void clickSLevelup() throws IOException {
         Main.player.upgradeItem(1, SmessageLabel);
     }
 
+    // upgrade shield
+    // use amount and type of materials selected
     @FXML
     protected void clickHLevelup() throws IOException {
         Main.player.upgradeItem(2, HmessageLabel);
     }
 
+    // upgrade armour
+    // use amount and type of materials selected
     @FXML
     protected void clickALevelup() throws IOException {
         Main.player.upgradeItem(3, AmessageLabel);
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

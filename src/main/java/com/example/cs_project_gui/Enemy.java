@@ -14,10 +14,10 @@ public class Enemy {
     protected int maxHealth;
     protected int attack;
     protected String description;
-    //protected ImageView image;
     protected Label hLabel = new Label();
     protected ProgressBar hBar = new ProgressBar();
     protected VBox infoVBox;
+    // stores all the possible enemies and their info (useful for hashmaps later)
     private static Enemy[] possibleEnemies = {
             new Enemy("Enemy", 10*Floor.floorLevel, Floor.floorLevel, """
             Enemies are people who have been corrupted by \nthe pollution"""),
@@ -38,18 +38,13 @@ public class Enemy {
                     However, once defeated, you can gain stat bonuses \nto your health, defence or attack""")
     };
 
+    // constructor for creating an enemy
     public Enemy(String name, int health, int attack, String description){
         this.name = name;
         this.health = health;
         maxHealth = health;
         this.attack = attack;
         this.description = description;
-//        InputStream stream = new FileInputStream("D:\images\elephant.jpg");
-//        Image image = new Image(stream);
-//        ImageView imageView = new ImageView();
-//        //Setting image to the image view
-//        imageView.setImage(image)
-        //image = new ImageView("Enemy_Hilichurl.png");
         hLabel.setText(this.health + "/" + maxHealth);
         hBar.setProgress((double) this.health/maxHealth);
         Label nameLabel = new Label(this.name);
@@ -59,32 +54,39 @@ public class Enemy {
         infoVBox.getChildren().addAll(nameLabel, h);
     }
 
+    // get enemy name
     public String getName(){
         return name;
     }
 
+    // get enemy description
     public String getDescription(){
         return description;
     }
 
+    // get enemy health
     public int getHealth(){
         return health;
     }
 
+    // get enemy attack
     public int getAttack(){
         return attack;
     }
 
+    // get enemy infovbox (to display on floor/dungeon screen)
     public VBox getInfoVBox(){
         return infoVBox;
     }
 
+    // get observable list of possible enemies (useful for tableviews)
     public static ObservableList<Enemy> getObservablePossibleEnemies(){
         ObservableList<Enemy> observablePossibleEnemies = FXCollections.observableArrayList();
         observablePossibleEnemies.addAll(possibleEnemies);
         return observablePossibleEnemies;
     }
 
+    // method to generate random enemies when creating a floor
     public static Enemy generateRandomEnemy(){
         possibleEnemies = new Enemy[]{
                 new Enemy("Enemy", 10 * Floor.floorLevel, Floor.floorLevel, """

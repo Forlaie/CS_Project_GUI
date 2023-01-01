@@ -28,7 +28,7 @@ public class Troll extends Enemy{
         return potion.getName();
     }
 
-    // override died function in Enemy class to include stealing
+    // when troll dies, instead of dropping items, they steal an item from player inventory
     public void Fdied(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel){
         Main.player.defeatedMonster(YTInfo, ETInfo, healthBar, healthLabel, floorLabel);
         if (!Main.player.getInventory().isEmpty()){

@@ -34,6 +34,7 @@ public class Shop_Controller implements Initializable {
     @FXML
     private Label coinsLabel;
 
+    // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         selectColumn.setCellValueFactory(new PropertyValueFactory<Potion, CheckBox>("checkBox"));
@@ -52,11 +53,13 @@ public class Shop_Controller implements Initializable {
         coinsLabel.setText("Coins: " + Main.player.getCoins());
     }
 
+    // purchase selected items
     @FXML
     protected void clickSubmit() throws IOException {
         Shop.purchaseItem(messageLabel, coinsLabel);
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

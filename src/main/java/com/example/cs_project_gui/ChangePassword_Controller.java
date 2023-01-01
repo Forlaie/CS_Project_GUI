@@ -25,6 +25,7 @@ public class ChangePassword_Controller {
     @FXML
     private Label messageLabel;
 
+    // change password and save it to login file
     @FXML
     protected void clickSubmit() throws FileNotFoundException, NoSuchAlgorithmException {
         String oldPassword = oldPasswordField.getText();
@@ -48,6 +49,7 @@ public class ChangePassword_Controller {
         }
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));

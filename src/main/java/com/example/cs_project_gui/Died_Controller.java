@@ -13,6 +13,7 @@ public class Died_Controller {
     @FXML
     private Button BButton;
 
+    // restart from previous save, then load home screen
     @FXML
     protected void clickPS() throws IOException {
         Main.player.died("S");
@@ -24,6 +25,7 @@ public class Died_Controller {
         stage.show();
     }
 
+    // reset from beginning, then load home screen
     @FXML
     protected void clickB() throws IOException {
         Main.player.died("B");

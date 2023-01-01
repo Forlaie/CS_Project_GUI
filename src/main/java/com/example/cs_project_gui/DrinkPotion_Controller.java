@@ -30,6 +30,7 @@ public class DrinkPotion_Controller implements Initializable {
     @FXML
     private Label messageLabel;
 
+    // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         selectColumn.setCellValueFactory(new PropertyValueFactory<Potion, CheckBox>("checkBox"));
@@ -46,6 +47,13 @@ public class DrinkPotion_Controller implements Initializable {
         tableView.setItems(Main.player.getObservableInventory());
     }
 
+    // use amount and type of potions selected
+    @FXML
+    protected void clickSubmit() throws IOException {
+        Main.player.usePotion(messageLabel);
+    }
+
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("floor.fxml"));
@@ -54,10 +62,5 @@ public class DrinkPotion_Controller implements Initializable {
         stage.setTitle("Wen Ymar Elad");
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    protected void clickSubmit() throws IOException {
-        Main.player.usePotion(messageLabel);
     }
 }

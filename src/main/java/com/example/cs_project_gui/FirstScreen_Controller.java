@@ -13,6 +13,7 @@ public class FirstScreen_Controller {
     @FXML
     private Button loginButton;
 
+    // load signup screen
     @FXML
     protected void clickSignup() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("signup.fxml"));
@@ -23,6 +24,7 @@ public class FirstScreen_Controller {
         stage.show();
     }
 
+    // load login screen
     @FXML
     protected void clickLogin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));

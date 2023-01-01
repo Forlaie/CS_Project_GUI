@@ -26,6 +26,7 @@ public class DrinkHealthPotion_Controller implements Initializable {
     @FXML
     private Label messageLabel;
 
+    // initialize labels when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
         currentHealthLabel.setText("Current health: " + Main.player.getHealth() + "/" + Main.player.getMaxHealth());
@@ -36,11 +37,14 @@ public class DrinkHealthPotion_Controller implements Initializable {
             numOfHealthPotionsLabel.setText("Health potions: " + Main.player.getInventory().get(Item.potions[0]));
         }
     }
+
+    // use amount of health potions selected
     @FXML
     protected void clickSubmit(){
         Main.player.drinkHealthPotion(currentHealthLabel, numOfHealthPotionsLabel, useTextField, messageLabel);
     }
 
+    // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));

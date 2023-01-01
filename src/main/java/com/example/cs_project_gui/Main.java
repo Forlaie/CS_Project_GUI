@@ -20,6 +20,8 @@ public class Main extends Application {
     public static SimpleStringProperty YT;
     public static SimpleStringProperty ET;
 
+    // very first method that is called when program runs
+    // load firstScreen screen
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("firstScreen.fxml"));
@@ -29,10 +31,12 @@ public class Main extends Application {
         stage.show();
     }
 
+    // launch program
     public static void main(String[] args) {
         launch();
     }
 
+    // static method to save player info into player file
     public static void putInfoIntoPlayerInfoFile() throws FileNotFoundException {
         PrintWriter playerOutput = new PrintWriter("playerInfo.txt");
         playerOutput.println(player.getHealth());
@@ -104,6 +108,7 @@ public class Main extends Application {
         playerOutput.close();
     }
 
+    // static method to save login info into login file
     public static void putInfoIntoLoginInfoFile() throws FileNotFoundException, NoSuchAlgorithmException {
         PrintWriter pw = new PrintWriter("loginInfo.txt");
         pw.println(player.getUsername());
@@ -111,6 +116,7 @@ public class Main extends Application {
         pw.close();
     }
 
+    // static method to save floor info into floor file
     public static void putInfoIntoFloorFile() throws FileNotFoundException {
         PrintWriter pw = new PrintWriter("floorInfo.txt");
         pw.println(Floor.floorLevel);
@@ -120,6 +126,7 @@ public class Main extends Application {
         pw.close();
     }
 
+    // hash password to keep it safe and secure from HACKERS (are you impressed ;D)
     public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-512");
         byte[] bytePassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
