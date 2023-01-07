@@ -447,7 +447,7 @@ public class Player {
                         potionsInUse.add(potion);
                     }
                 }
-                messageLabel.setText("Successfully used potions!");
+                DrinkPotion_Controller.used = true;
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                 Stage stage = (Stage) messageLabel.getScene().getWindow();
@@ -519,7 +519,7 @@ public class Player {
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
             // takes player defence into account when calculating damage taken
-            int damage = enemy.getAttack()*(100/defence);
+            int damage = (int) (enemy.getAttack()*(defence/100.0));
             health -= damage;
             Main.ET.setValue(Main.ET.getValue() + enemy.getName() + " has dealt " + damage + " damage\n");
             // check if player has died

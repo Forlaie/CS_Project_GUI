@@ -30,7 +30,7 @@
                </columnResizePolicy>
             </TableView>
             <Button fx:id="submitButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickSubmit" text="Submit" />
-            <Label fx:id="messageLabel" prefHeight="20.0" prefWidth="0.0">
+            <Label fx:id="messageLabel">
                <font>
                   <Font size="14.0" />
                </font>

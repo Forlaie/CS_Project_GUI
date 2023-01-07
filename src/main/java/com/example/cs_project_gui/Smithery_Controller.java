@@ -16,6 +16,10 @@ public class Smithery_Controller implements Initializable {
     @FXML
     private Button backButton;
     @FXML
+    private TabPane tabPane;
+    @FXML
+    private Tab swordTab;
+    @FXML
     private TableView<Item> swordTable;
     @FXML
     private TableColumn<Item, CheckBox> SselectColumn;
@@ -33,6 +37,8 @@ public class Smithery_Controller implements Initializable {
     private Label SmessageLabel;
     @FXML
     private Label ScoinsLabel;
+    @FXML
+    private Tab shieldTab;
     @FXML
     private TableView<Item> shieldTable;
     @FXML
@@ -52,6 +58,8 @@ public class Smithery_Controller implements Initializable {
     @FXML
     private Label HcoinsLabel;
     @FXML
+    private Tab armourTab;
+    @FXML
     private TableView<Item> armourTable;
     @FXML
     private TableColumn<Item, CheckBox> AselectColumn;
@@ -69,10 +77,25 @@ public class Smithery_Controller implements Initializable {
     private Label AmessageLabel;
     @FXML
     private Label AcoinsLabel;
+    public static boolean Sused;
+    public static boolean Hused;
+    public static boolean Aused;
 
     // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        if (Sused){
+            SmessageLabel.setText("Successfully upgraded sword!");
+            tabPane.getSelectionModel().select(swordTab);
+        }
+        if (Hused){
+            HmessageLabel.setText("Successfully upgraded shield!");
+            tabPane.getSelectionModel().select(shieldTab);
+        }
+        if (Aused){
+            AmessageLabel.setText("Successfully upgraded armour!");
+            tabPane.getSelectionModel().select(armourTab);
+        }
         SselectColumn.setCellValueFactory(new PropertyValueFactory<Item, CheckBox>("checkBox"));
         SnameColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
         ScostColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("cost"));
@@ -140,6 +163,9 @@ public class Smithery_Controller implements Initializable {
     // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
+        Sused = false;
+        Hused = false;
+        Aused = false;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) backButton.getScene().getWindow();

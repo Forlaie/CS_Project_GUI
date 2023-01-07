@@ -1,5 +1,6 @@
 package com.example.cs_project_gui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -165,6 +166,8 @@ public class HomeScreen_Controller {
     // load floor screen
     @FXML
     protected void clickFloor() throws IOException {
+        Main.YT.setValue("");
+        Main.ET.setValue("");
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("floor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -176,6 +179,8 @@ public class HomeScreen_Controller {
     // load dungeon screen
     @FXML
     protected void clickDungeon() throws IOException {
+        Main.YT.setValue("");
+        Main.ET.setValue("");
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("dungeonCreation.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) menuBar.getScene().getWindow();

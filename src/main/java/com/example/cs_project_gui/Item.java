@@ -15,6 +15,7 @@ public class Item {
     protected int health;
     protected int defence;
     protected int attack;
+    protected String stats;
     protected int cost;
     protected String description;
     protected CheckBox checkBox;
@@ -153,6 +154,12 @@ public class Item {
     public void setAttack(int attack){
         this.attack = attack;
     }
+
+    // get item stats (useful for tableviews later)
+    public String getStats(){
+        return "+" + health + " hp, +" + defence + " def, +" + attack + " atk";
+    }
+
     // get item textField (useful for tableviews later)
     public TextField getTextField(){
         return textField;
@@ -192,9 +199,7 @@ public class Item {
                                 useSomething = true;
                                 break;
                             }
-                        } catch (NumberFormatException e) {
-                            //throw new RuntimeException(e);
-                        }
+                        } catch (NumberFormatException ignored) {}
                     }
                 }
                 if (useSomething){
@@ -239,13 +244,15 @@ public class Item {
                                 }
                             }
                         }
+                        Smithery_Controller.Sused = true;
+                        Smithery_Controller.Hused = false;
+                        Smithery_Controller.Aused = false;
                         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("smithery.fxml"));
                         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                         Stage stage = (Stage) messageLabel.getScene().getWindow();
                         stage.setTitle("Wen Ymar Elad");
                         stage.setScene(scene);
                         stage.show();
-//                        messageLabel.setText("Successfully upgraded sword!");
                     }
                 }
                 else{
@@ -264,9 +271,7 @@ public class Item {
                                 useSomething = true;
                                 break;
                             }
-                        } catch (NumberFormatException e) {
-                            //throw new RuntimeException(e);
-                        }
+                        } catch (NumberFormatException ignored) {}
                     }
                 }
                 if (useSomething){
@@ -311,13 +316,15 @@ public class Item {
                                 }
                             }
                         }
+                        Smithery_Controller.Sused = false;
+                        Smithery_Controller.Hused = true;
+                        Smithery_Controller.Aused = false;
                         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("smithery.fxml"));
                         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                         Stage stage = (Stage) messageLabel.getScene().getWindow();
                         stage.setTitle("Wen Ymar Elad");
                         stage.setScene(scene);
                         stage.show();
-//                        messageLabel.setText("Successfully upgraded shield!");
                     }
                 }
                 else{
@@ -336,9 +343,7 @@ public class Item {
                                 useSomething = true;
                                 break;
                             }
-                        } catch (NumberFormatException e) {
-                            //throw new RuntimeException(e);
-                        }
+                        } catch (NumberFormatException ignored) {}
                     }
                 }
                 if (useSomething){
@@ -383,13 +388,15 @@ public class Item {
                                 }
                             }
                         }
+                        Smithery_Controller.Sused = false;
+                        Smithery_Controller.Hused = false;
+                        Smithery_Controller.Aused = true;
                         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("smithery.fxml"));
                         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                         Stage stage = (Stage) messageLabel.getScene().getWindow();
                         stage.setTitle("Wen Ymar Elad");
                         stage.setScene(scene);
                         stage.show();
-//                        messageLabel.setText("Successfully upgraded armour!");
                     }
                 }
                 else{

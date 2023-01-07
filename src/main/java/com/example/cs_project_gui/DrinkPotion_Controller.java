@@ -29,10 +29,14 @@ public class DrinkPotion_Controller implements Initializable {
     private Button submitButton;
     @FXML
     private Label messageLabel;
+    public static boolean used = false;
 
     // initialize tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        if (used){
+            messageLabel.setText("Successfully used potions!");
+        }
         selectColumn.setCellValueFactory(new PropertyValueFactory<Potion, CheckBox>("checkBox"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Potion, String>("name"));
         //amountColumn.setCellValueFactory(new PropertyValueFactory<Potion, Integer>("amount"));
@@ -56,7 +60,8 @@ public class DrinkPotion_Controller implements Initializable {
     // go back to previous screen
     @FXML
     protected void clickBack() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("floor.fxml"));
+        used = false;
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.previousScreen));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");

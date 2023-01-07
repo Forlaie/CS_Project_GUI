@@ -198,6 +198,7 @@ public class Dungeon_Controller implements Initializable {
     // set dungeon as previous screen
     @FXML
     protected void clickDrinkPotion() throws IOException {
+        Main.previousScreen = "dungeon.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("drinkPotion.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) menuBar.getScene().getWindow();

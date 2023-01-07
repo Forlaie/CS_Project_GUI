@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 
 public class DungeonCreation_Controller implements Initializable {
     @FXML
+    private Button backButton;
+    @FXML
     private MenuButton typeMenuButton;
     @FXML
     private MenuItem enemyMenuItem;
@@ -82,6 +84,17 @@ public class DungeonCreation_Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("dungeon.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) typeMenuButton.getScene().getWindow();
+        stage.setTitle("Wen Ymar Elad");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // go back to previous screen
+    @FXML
+    protected void clickBack() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setTitle("Wen Ymar Elad");
         stage.setScene(scene);
         stage.show();
