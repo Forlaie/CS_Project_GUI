@@ -297,11 +297,6 @@ public class Player {
         materials.clear();
     }
 
-    // update coins after selling an item
-//    public void soldItem(int profit) {
-//        coins += profit;
-//    }
-
     // upgrade an item
     public void upgradeItem(int itemChoice, Label messageLabel) throws IOException {
         switch (itemChoice){
