@@ -40,6 +40,7 @@ public class Floor {
 
     // sets the floor enemies from the save file
     public void setFloorEnemies(ArrayList<String> enemyNames) throws FileNotFoundException {
+        enemies.clear();
         for (String name : enemyNames){
             switch(name) {
                 case "Enemy" -> enemies.add(new Enemy("Enemy", 10*Floor.floorLevel, Floor.floorLevel, """

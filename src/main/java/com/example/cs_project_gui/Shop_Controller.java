@@ -56,7 +56,14 @@ public class Shop_Controller implements Initializable {
     // purchase selected items
     @FXML
     protected void clickSubmit() throws IOException {
+        // reset everything when potions are used (checkbox + textfield)
         Shop.purchaseItem(messageLabel, coinsLabel);
+        Main.putInfoIntoPlayerInfoFile();
+        for (Potion potion : Item.getObservablePotions()){
+            potion.getCheckBox().setSelected(false);
+            potion.getTextField().clear();
+            potion.getTextField().setDisable(true);
+        }
     }
 
     // go back to previous screen

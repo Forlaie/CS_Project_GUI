@@ -144,6 +144,7 @@ public class Smithery_Controller implements Initializable {
     @FXML
     protected void clickSLevelup() throws IOException {
         Main.player.upgradeItem(1, SmessageLabel);
+        Main.putInfoIntoPlayerInfoFile();
     }
 
     // upgrade shield
@@ -151,6 +152,7 @@ public class Smithery_Controller implements Initializable {
     @FXML
     protected void clickHLevelup() throws IOException {
         Main.player.upgradeItem(2, HmessageLabel);
+        Main.putInfoIntoPlayerInfoFile();
     }
 
     // upgrade armour
@@ -158,6 +160,7 @@ public class Smithery_Controller implements Initializable {
     @FXML
     protected void clickALevelup() throws IOException {
         Main.player.upgradeItem(3, AmessageLabel);
+        Main.putInfoIntoPlayerInfoFile();
     }
 
     // go back to previous screen
