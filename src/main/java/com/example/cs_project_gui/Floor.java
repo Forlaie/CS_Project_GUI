@@ -3,8 +3,11 @@ package com.example.cs_project_gui;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -90,13 +93,14 @@ public class Floor {
 
     // runs when floor is successfully cleared
     // gets rid of the potions in effect (ends buff)
-    public void floorCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox) {
+    public void floorCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox actionsVBox, VBox doneVBox, VBox enemyVBox, ScrollPane scrollPane) {
         floorLabel.setText("Floor " + floorLevel + " cleared!");
         for (Potion potion : Main.player.getPotionsInUse()){
             potion.endOfEffect();
         }
         Main.player.clearPotionsInUse();
-        fightHBox.setVisible(false);
-        doneHBox.setVisible(true);
+        scrollPane.setVisible(false);
+        actionsVBox.setVisible(false);
+        doneVBox.setVisible(true);
     }
 }

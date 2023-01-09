@@ -509,12 +509,12 @@ public class Player {
     }
 
     // floor battle function
-    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, HBox fightHBox, HBox doneHBox, VBox enemyVBox) throws IOException {
+    public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox actionsVBox, VBox doneVBox, VBox enemyVBox, ScrollPane scrollPane) throws IOException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.floor.getEnemies();
         for (Enemy enemy : enemies){
             // takes player defence into account when calculating damage taken
-            int damage = (int) (enemy.getAttack()*(defence/100.0));
+            int damage = (int) (enemy.getAttack()*(1-defence/1000.0));
             health -= damage;
             Main.ET.setValue(Main.ET.getValue() + enemy.getName() + " has dealt " + damage + " damage\n");
             // check if player has died
@@ -542,17 +542,17 @@ public class Player {
         // update the enemies on the floor (remove dead enemies)
         Main.floor.updateEnemies();
         if (Main.floor.getAllEnemiesDead()){
-            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox);
+            Main.floor.floorCleared(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, actionsVBox, doneVBox, enemyVBox, scrollPane);
         }
     }
 
     // dungeon battle function
-    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox, VBox enemyVBox) throws IOException {
+    public void Dbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, VBox actionsVBox, VBox doneVBox, VBox enemyVBox, ScrollPane scrollPane) throws IOException {
         // print out what enemies did on their turn
         ArrayList<Enemy> enemies = Main.dungeon.getEnemies();
         for (Enemy enemy : enemies){
             // takes player defence into account when calculating damage taken
-            int damage = enemy.getAttack()*(100/defence);
+            int damage = (int) (enemy.getAttack()*(1-defence/1000.0));
             health -= damage;
             Main.ET.setValue(Main.ET.getValue() + enemy.getName() + " has dealt " + damage + " damage\n");
             if (health <= 0){
@@ -580,7 +580,7 @@ public class Player {
         healthLabel.setText(health + "/" + maxHealth);
         Main.dungeon.updateEnemies();
         if (Main.dungeon.getAllEnemiesDead()){
-            Main.dungeon.dungeonCleared(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox);
+            Main.dungeon.dungeonCleared(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, actionsVBox, doneVBox, scrollPane);
         }
         }
 

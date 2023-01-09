@@ -18,7 +18,7 @@ public class Golem extends Enemy{
     // override floor battle function from parent class (Enemy)
     // takes into account golem defence when calculating player damage
     public void Fbattle(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label floorLabel, VBox enemyVBox){
-        int playerDamage = (int) (Main.player.getAttack() - Main.player.getAttack()*(defence/1000.0));
+        int playerDamage = (int) (Main.player.getAttack()*(1-defence/1000.0));
         if (playerDamage < 0){
             playerDamage = 0;
         }

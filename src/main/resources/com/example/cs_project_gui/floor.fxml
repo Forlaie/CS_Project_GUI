@@ -63,9 +63,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox fx:id="fightHBox" layoutX="20.0" layoutY="266.0" spacing="10.0">
+      <HBox layoutX="20.0" layoutY="266.0" spacing="10.0">
          <children>
-            <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <VBox fx:id="actionsVBox" alignment="CENTER" spacing="10.0">
                <children>
                   <Button fx:id="fightButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickFight" text="Fight">
                      <font>
@@ -110,7 +110,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox fx:id="doneHBox" alignment="CENTER" layoutX="135.0" layoutY="310.0" spacing="100.0">
+      <VBox fx:id="doneVBox" alignment="CENTER" layoutX="366.0" layoutY="117.0" spacing="15.0" visible="false">
          <children>
             <Button fx:id="exitFloorButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickExitFloor" text="Exit floor">
                <font>
@@ -123,7 +123,7 @@
                </font>
             </Button>
          </children>
-      </HBox>
+      </VBox>
       <VBox alignment="CENTER" layoutX="145.0" layoutY="48.0">
          <children>
             <HBox alignment="CENTER" spacing="5.0">
@@ -148,7 +148,7 @@
             </ImageView>
          </children>
       </VBox>
-      <ScrollPane layoutX="328.0" layoutY="48.0" prefHeight="212.0" prefWidth="260.0">
+      <ScrollPane fx:id="scrollPane" layoutX="328.0" layoutY="48.0" prefHeight="212.0" prefWidth="260.0">
          <content>
             <VBox fx:id="enemyVBox" alignment="CENTER" prefHeight="222.0" prefWidth="258.0" spacing="5.0" />
          </content>

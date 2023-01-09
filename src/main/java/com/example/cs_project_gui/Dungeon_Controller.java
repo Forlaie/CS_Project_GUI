@@ -58,19 +58,35 @@ public class Dungeon_Controller implements Initializable {
     @FXML
     private Label dungeonLabel;
     @FXML
-    private HBox fightHBox;
-    @FXML
     private Button exitDungeonButton;
     @FXML
     private Button enterDungeonAgainButton;
     @FXML
-    private HBox doneHBox;
+    private VBox doneVBox;
     @FXML
     private VBox enemyVBox;
+    @FXML
+    private VBox actionsVBox;
+    @FXML
+    private ScrollPane scrollPane;
+    private static boolean FT = true;
 
+    // load tutorial if first time
     // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        if (Main.newUser && FT){
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("newD.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load(), 620, 430);
+                stage.setTitle("Tutorial");
+                stage.setScene(scene);
+                stage.show();
+                FT = false;
+            } catch (IOException ignored) {}
+        }
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
         YTInfo.textProperty().bind(Main.YT);
@@ -80,13 +96,15 @@ public class Dungeon_Controller implements Initializable {
         }
         if (Main.dungeon.getAllEnemiesDead()){
             dungeonLabel.setText("Dungeon cleared!");
-            fightHBox.setVisible(false);
-            doneHBox.setVisible(true);
+            scrollPane.setVisible(false);
+            actionsVBox.setVisible(false);
+            doneVBox.setVisible(true);
         }
         else{
             dungeonLabel.setText(Dungeon.enemyType + " Dungeon: " + Dungeon.difficultyLevel);
-            fightHBox.setVisible(true);
-            doneHBox.setVisible(false);
+            scrollPane.setVisible(true);
+            actionsVBox.setVisible(true);
+            doneVBox.setVisible(false);
         }
     }
 
@@ -272,7 +290,7 @@ public class Dungeon_Controller implements Initializable {
     // fight enemies in dungeon
     @FXML
     protected void clickFight() throws IOException {
-        Main.player.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, fightHBox, doneHBox, enemyVBox);
+        Main.player.Dbattle(YTInfo, ETInfo, healthBar, healthLabel, dungeonLabel, actionsVBox, doneVBox, enemyVBox, scrollPane);
     }
 
     // exit dungeon and load home screen

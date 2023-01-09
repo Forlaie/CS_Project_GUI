@@ -81,6 +81,7 @@ public class Login_Controller {
                             int stat = Integer.parseInt(playerInput.nextLine());
                             armourInfo[i] = stat;
                         }
+                        Main.newUser = false;
                         Main.player = new Player(fileUsername, filePassword, health, maxHealth, defence, attack, level, xp, coins, materialQuantities, potionQuantities, swordInfo, shieldInfo, armourInfo);
                         //messageLabel.setText("Successful login!");
                         Scanner floorInput = new Scanner(new File("floorInfo.txt"));

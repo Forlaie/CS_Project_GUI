@@ -46,6 +46,7 @@ public class Signup_Controller {
                     Main.putInfoIntoPlayerInfoFile();
                     Main.floor = new Floor();
                     Main.putInfoIntoFloorFile();
+                    Main.newUser = true;
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homeScreen.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                     Stage stage = (Stage) signupButton.getScene().getWindow();

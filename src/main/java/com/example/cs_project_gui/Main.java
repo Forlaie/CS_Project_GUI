@@ -19,6 +19,7 @@ public class Main extends Application {
     public static Dungeon dungeon;
     public static SimpleStringProperty YT;
     public static SimpleStringProperty ET;
+    public static boolean newUser;
 
     // very first method that is called when program runs
     // load firstScreen screen

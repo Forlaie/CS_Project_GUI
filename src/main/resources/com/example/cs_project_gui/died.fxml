@@ -15,12 +15,12 @@
       </Label>
       <HBox alignment="CENTER" layoutX="105.0" layoutY="175.0" spacing="150.0">
          <children>
-            <Button fx:id="PSButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickPS" prefWidth="120.0" text="Restart from previous save" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="PSButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickPS" prefWidth="120.0" text="Restart from previous save" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="BButton" focusTraversable="false" mnemonicParsing="false" onAction="#clickB" prefWidth="120.0" text="Restart from beginning" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="BButton" cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#clickB" prefWidth="120.0" text="Restart from beginning" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

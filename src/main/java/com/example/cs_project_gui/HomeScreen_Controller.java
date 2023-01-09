@@ -3,6 +3,7 @@ package com.example.cs_project_gui;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -10,8 +11,10 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HomeScreen_Controller {
+public class HomeScreen_Controller implements Initializable {
     @FXML
     private MenuBar menuBar;
     @FXML
@@ -46,6 +49,24 @@ public class HomeScreen_Controller {
     private Button shopButton;
     @FXML
     private Button smitheryButton;
+    private static boolean FT = true;
+
+    // load tutorial if first time
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (Main.newUser && FT){
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("newHS.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load(), 600, 400);
+                stage.setTitle("Tutorial");
+                stage.setScene(scene);
+                stage.show();
+                FT = false;
+            } catch (IOException ignored) {}
+        }
+    }
 
     // load gameInfo screen
     // set homeScreen as previous screen

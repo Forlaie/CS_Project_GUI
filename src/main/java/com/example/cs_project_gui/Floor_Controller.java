@@ -58,19 +58,36 @@ public class Floor_Controller implements Initializable {
     @FXML
     private Label floorLabel;
     @FXML
-    private HBox fightHBox;
-    @FXML
     private Button exitFloorButton;
     @FXML
     private Button continueToNextFloorButton;
     @FXML
-    private HBox doneHBox;
+    private VBox doneVBox;
     @FXML
     private VBox enemyVBox;
+    @FXML
+    private VBox actionsVBox;
+    @FXML
+    private ScrollPane scrollPane;
+    private static boolean FT = true;
 
+    // load tutorial if first time
     // initialize labels and tableviews when loaded
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        if (Main.newUser && FT){
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("newF.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load(), 615, 430);
+                stage.setTitle("Tutorial");
+                stage.setScene(scene);
+                stage.show();
+                FT = false;
+            } catch (IOException ignored) {}
+        }
+
         healthLabel.setText(Main.player.getHealth() + "/" + Main.player.getMaxHealth());
         healthBar.setProgress((double) Main.player.getHealth()/Main.player.getMaxHealth());
         YTInfo.textProperty().bind(Main.YT);
@@ -80,13 +97,15 @@ public class Floor_Controller implements Initializable {
         }
         if (Main.floor.getAllEnemiesDead()){
             floorLabel.setText("Floor " + Floor.floorLevel + " cleared!");
-            fightHBox.setVisible(false);
-            doneHBox.setVisible(true);
+            scrollPane.setVisible(false);
+            actionsVBox.setVisible(false);
+            doneVBox.setVisible(true);
         }
         else{
             floorLabel.setText("Floor " + Floor.floorLevel);
-            fightHBox.setVisible(true);
-            doneHBox.setVisible(false);
+            scrollPane.setVisible(true);
+            actionsVBox.setVisible(true);
+            doneVBox.setVisible(false);
         }
     }
 
@@ -272,7 +291,7 @@ public class Floor_Controller implements Initializable {
     // fight enemies in floor
     @FXML
     protected void clickFight() throws IOException {
-        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, fightHBox, doneHBox, enemyVBox);
+        Main.player.Fbattle(YTInfo, ETInfo, healthBar, healthLabel, floorLabel, actionsVBox, doneVBox, enemyVBox, scrollPane);
     }
 
     // exit floor and load home screen

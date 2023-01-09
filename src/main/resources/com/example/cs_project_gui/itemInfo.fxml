@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs_project_gui.ItemInfo_Controller">
    <children>
-      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" style="-fx-background-color: #82f5d0;" text="&lt;-" />
       <Label layoutX="228.0" layoutY="27.0" text="Item Info">
          <font>
             <Font size="36.0" />

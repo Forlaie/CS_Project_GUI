@@ -3,8 +3,11 @@ package com.example.cs_project_gui;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
 import java.util.ArrayList;
 
 public class Dungeon {
@@ -80,13 +83,14 @@ public class Dungeon {
 
     // runs when dungeon is successfully cleared
     // gets rid of the potions in effect (ends buff)
-    public void dungeonCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, HBox fightHBox, HBox doneHBox){
+    public void dungeonCleared(TextArea YTInfo, TextArea ETInfo, ProgressBar healthBar, Label healthLabel, Label dungeonLabel, VBox actionsVBox, VBox doneVBox, ScrollPane scrollPane){
         dungeonLabel.setText("Dungeon cleared!");
         for (Potion potion : Main.player.getPotionsInUse()){
             potion.endOfEffect();
         }
         Main.player.clearPotionsInUse();
-        fightHBox.setVisible(false);
-        doneHBox.setVisible(true);
+        scrollPane.setVisible(false);
+        actionsVBox.setVisible(false);
+        doneVBox.setVisible(true);
     }
 }

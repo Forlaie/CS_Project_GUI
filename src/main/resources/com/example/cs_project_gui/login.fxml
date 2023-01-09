@@ -70,6 +70,6 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;-" />
+      <Button fx:id="backButton" cancelButton="true" focusTraversable="false" layoutY="1.0" mnemonicParsing="false" onAction="#clickBack" style="-fx-background-color: #82f5d0;" text="&lt;-" />
    </children>
 </AnchorPane>
