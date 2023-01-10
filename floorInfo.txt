@@ -1,2 +1,4 @@
-1
-Vampire
+3
+Golem
+Golem
+Enemy
