@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar focusTraversable="false" layoutY="1.0">
          <menus>
